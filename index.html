@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Chiara Francescon | Soluzioni Digitali, Base44 & Automazioni</title>
+  <meta name="description" content="Portfolio di Chiara Francescon - Sviluppo App Cloud Base44 & Antigravity 2, Ideatrice di MandaloVia, automazioni email marketing e gestione processi aziendali.">
+  <meta name="keywords" content="Chiara Francescon, Chiara Francescon portfolio, MandaloVia, Base44, Antigravity 2, Email Marketing, Automazioni Excel, Gestione Magazzino, D.Lgs. 81/08">
+  <meta name="author" content="Chiara Francescon">
+  
+  <!-- Favicon Logo -->
+  <link rel="icon" type="image/jpeg" href="/logo.jpg">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Chiara Francescon | Soluzioni Digitali, Base44 & Automazioni">
+  <meta property="og:description" content="Sviluppo App Cloud Base44, Antigravity 2, Piattaforma MandaloVia e automazioni email marketing.">
+  <meta property="og:image" content="/logo.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Confetti Canvas Overlay -->
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <!-- Toast Notification -->
+  <div class="toast-msg" id="toastMsg"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="logo">
+        <img src="/logo.jpg" alt="Chiara Francescon Logo" class="nav-logo-img">
+        <span>Chiara Francescon</span>
+      </a>
+      
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#chi-sono" class="nav-link">Chi Sono</a></li>
+        <li><a href="#progetti" class="nav-link">Progetti</a></li>
+        <li><a href="#skills" class="nav-link">Competenze</a></li>
+        <li><a href="#interactive" class="nav-link">Efficienza ⚡</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+        <li><a href="#contatti" class="nav-link">Contatti</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 0.6rem;">
+        <!-- Sound Effect Toggle -->
+        <button class="sound-toggle-btn" id="soundToggle" title="Attiva/Disattiva Suoni Divertenti">
+          🔊 Audio ON
+        </button>
+
+        <a href="#contatti" class="btn btn-primary" id="headerCta">Parliamo! 🎉</a>
+      </div>
+      
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          ✨ Soluzioni Digitali & Automazioni Cloud
+        </div>
+        
+        <h1 class="hero-title">
+          Ciao! Sono Chiara <span class="gradient-text">Francescon</span> <span class="wave-hand">👋</span>
+        </h1>
+        
+        <p class="hero-description">
+          Specializzata nello <strong>sviluppo di applicazioni cloud con Base44 ed Antigravity 2</strong>, automazioni di processi e campagne di <strong>email marketing massivo (fino a 800 mail personalizzate)</strong>. Ideatrice della piattaforma cloud <strong>MandaloVia</strong> per la gestione documentazione e conformità D.Lgs. 81/08.
+        </p>
+        
+        <div class="hero-cta">
+          <button class="btn btn-primary" id="heroBtnFun">Lancia Confetti 🎉</button>
+          <a href="#progetti" class="btn btn-outline">Esplora i Progetti 🚀</a>
+          <a href="/CV_Chiara_Francescon.pdf" download="CV_Chiara_Francescon.pdf" target="_blank" class="btn btn-outline" id="downloadCvBtn">Scarica CV (PDF) 📄</a>
+        </div>
+
+        <div class="hero-quick-stats">
+          <div class="stat-item">
+            <span class="stat-number">3+</span>
+            <span class="stat-label">Progetti Digitali</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">Base44</span>
+            <span class="stat-label">Sviluppo App Cloud</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">Antigravity 2</span>
+            <span class="stat-label">Soluzioni Avanzate</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avatar & Badges with Logo -->
+      <div class="hero-visual">
+        <div class="avatar-container">
+          <div class="avatar-inner">
+            <img src="/logo.jpg" alt="Logo CF Monogram" class="hero-logo-img">
+          </div>
+        </div>
+
+        <div class="floating-badge badge-1" id="badge1">
+          ⚡ Base44 & Cloud Dev
+        </div>
+        <div class="floating-badge badge-2" id="badge2">
+          💡 Creator di MandaloVia
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Chi Sono Section -->
+    <section class="about reveal" id="chi-sono">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Profilo Professionale</span>
+          <h2 class="section-title">Esperienza & Competenze 💡</h2>
+          <p class="section-subtitle">
+            Sviluppo di applicazioni cloud con Base44 e Antigravity 2, gestione della documentazione di cantiere e automazioni avanzate.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <div class="card-icon">⚡</div>
+            <h3>Sviluppo App Cloud (Base44 & Antigravity 2)</h3>
+            <p>
+              Creazione di piattaforme web gestionali avanzate per l'invio documenti, gestione magazzino, fiere ed eventi.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <div class="card-icon">☁️</div>
+            <h3>Piattaforme Cloud & MandaloVia</h3>
+            <p>
+              Ideazione e gestione di <strong>MandaloVia</strong>, piattaforma web per l'invio protetto e automatizzato della documentazione di cantiere e conformità.
+            </p>
+          </div>
+
+          <div class="about-card">
+            <div class="card-icon">📧</div>
+            <h3>Automazioni Email Marketing (800+ Mail)</h3>
+            <p>
+              Sviluppo di modelli Excel/VBA per l'invio massivo e personalizzato di oltre 800 email per campagne in Italia e in Francia con brochure allegata.
+            </p>
+          </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="skills-container reveal" id="skills">
+          <h3 style="font-size: 1.4rem; margin-bottom: 0.8rem;">Competenze Tecniche & Software</h3>
+          
+          <div class="skills-grid" id="skillsGrid">
+            <!-- Dynamically populated -->
+          </div>
+
+          <h4 style="margin-top: 2rem; margin-bottom: 0.8rem; font-size: 1.05rem; color: var(--accent-primary);">Competenze Operative & Amministrative</h4>
+          <div class="pills-cloud" id="pillsCloud">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects reveal" id="progetti">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Portfolio</span>
+          <h2 class="section-title">Progetti Realizzati 🚀</h2>
+          <p class="section-subtitle">
+            Selezione delle soluzioni software, piattaforme cloud e automazioni gestionali.
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filter-bar" id="filterBar">
+          <button class="filter-btn active" data-filter="all">Tutti i Progetti</button>
+          <button class="filter-btn" data-filter="web-app">Piattaforme Web Cloud</button>
+          <button class="filter-btn" data-filter="automations">Automazioni & Marketing</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Dynamically generated project cards -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Section / Fun Playground & ROI Calculator -->
+    <section class="interactive-section reveal" id="interactive">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Efficienza & Stima ⚡</span>
+          <h2 class="section-title">Calcola il Risparmio di Tempo!</h2>
+          <p class="section-subtitle">
+            Scopri quante ore e costi puoi risparmiare e configura l'esigenza della tua azienda!
+          </p>
+        </div>
+
+        <!-- Widget 1: Time Saved ROI Calculator -->
+        <div class="widget-card" style="margin-bottom: 3rem;">
+          <span class="section-tag">Calcolatore di Efficienza ⏱️</span>
+          <h3 class="widget-title">Quanto tempo perdi in compiti manuali?</h3>
+          <p class="widget-subtitle">Sposta lo slider per scoprire quante ore e costi puoi risparmiare con le automazioni ed i gestionali di Chiara!</p>
+
+          <div class="roi-calculator-box">
+            <div class="roi-slider-container">
+              <label for="hoursSlider" class="roi-label">
+                Ore perse al giorno in compiti ripetitivi / carte: <span id="hoursVal" class="roi-val-highlight">3 Ore/Giorno</span>
+              </label>
+              <input type="range" id="hoursSlider" min="1" max="10" value="3" class="roi-range">
+            </div>
+
+            <div class="roi-results-grid">
+              <div class="roi-res-card">
+                <span class="roi-res-number" id="resWeeklyHours">15 Ore</span>
+                <span class="roi-res-label">Risparmiate ogni Settimana ⏳</span>
+              </div>
+              <div class="roi-res-card">
+                <span class="roi-res-number" id="resYearlyHours">720 Ore</span>
+                <span class="roi-res-label">Risparmiate ogni Anno 🚀</span>
+              </div>
+              <div class="roi-res-card highlight">
+                <span class="roi-res-number" id="resMoneySaved">€ 14.400</span>
+                <span class="roi-res-label">Valore Efficienza Stimato/Anno 💰</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Widget 2: Interactive Configurator for Rapid Estimate -->
+        <div class="widget-card" style="margin-bottom: 3rem;">
+          <span class="section-tag">Configuratore di Progetto 💡</span>
+          <h3 class="widget-title">Di quale soluzione ha bisogno la tua attività?</h3>
+          <p class="widget-subtitle">Seleziona le tue preferenze per generare un messaggio pre-compilato su misura!</p>
+
+          <div class="configurator-box">
+            <div class="config-step">
+              <h4 class="config-step-title">1. Tipo di Soluzione Requisito:</h4>
+              <div class="config-pills" id="configTypePills">
+                <button class="config-pill active" data-type="Piattaforma Web Cloud (Base44 / Antigravity 2)">Piattaforma Web Cloud ⚡</button>
+                <button class="config-pill" data-type="Gestione Magazzino & Materiali">Gestione Magazzino 📦</button>
+                <button class="config-pill" data-type="Automazione Email Marketing (800+ Mail)">Email Marketing Massivo 📧</button>
+                <button class="config-pill" data-type="Automazioni Excel & Modelli Gestionali">Automazione Excel/VBA 📊</button>
+              </div>
+            </div>
+
+            <div class="config-step" style="margin-top: 1.5rem;">
+              <h4 class="config-step-title">2. Urgenza dell'Intervento:</h4>
+              <div class="config-pills" id="configUrgencyPills">
+                <button class="config-pill active" data-urgency="Entro 2 settimane (Priorità Alta)">Inizio Immediato 🚀</button>
+                <button class="config-pill" data-urgency="Entro 1 mese">Entro 1 Mese 🗓️</button>
+                <button class="config-pill" data-urgency="Pianificazione a medio termine">Pianificazione 💡</button>
+              </div>
+            </div>
+
+            <div class="config-output-box" style="margin-top: 1.8rem; text-align: center;">
+              <button class="btn btn-primary" id="applyConfigBtn">Invia Richiesta Personalizzata 🎉</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Widget 3: Interactive Quiz Box -->
+        <div class="widget-card">
+          <span class="section-tag">Mini Quiz 🧙‍♀️</span>
+          <h3 class="widget-title">Che Tipo di Profilo Digitale Sei?</h3>
+          <p class="widget-subtitle">Rispondi a 2 domande veloci per scoprire la tua personalità lavorativa!</p>
+
+          <div id="quizContainer" class="quiz-box">
+            <div class="quiz-step active" id="quizStep1">
+              <h4 style="margin-bottom: 1rem; font-size: 1.15rem;">1. Come gestisci i compiti ripetitivi e l'invio mail?</h4>
+              <div class="quiz-options">
+                <button class="quiz-opt" data-score="1">A) Automatizzo tutto per inviare fino a 800 mail personalizzate in 2 click ⚡</button>
+                <button class="quiz-opt" data-score="2">B) Creo un foglio Excel super ordinato da 500 righe 📊</button>
+                <button class="quiz-opt" data-score="3">C) Chiamo Chiara Francescon prima che impazzisca! 📞</button>
+              </div>
+            </div>
+
+            <div class="quiz-step" id="quizStep2" style="display:none;">
+              <h4 style="margin-bottom: 1rem; font-size: 1.15rem;">2. Come invii i documenti di cantiere e tesserini?</h4>
+              <div class="quiz-options">
+                <button class="quiz-opt" data-score="1">A) Invio un link sicuro e temporizzato con MandaloVia ☁️</button>
+                <button class="quiz-opt" data-score="2">B) Allego 20 PDF pesanti bloccando la posta mail 📧</button>
+                <button class="quiz-opt" data-score="3">C) Stampo tutto su carta e porto a mano in cantiere 🚶‍♀️</button>
+              </div>
+            </div>
+
+            <div class="quiz-result" id="quizResult" style="display:none;">
+              <!-- Dynamic Result -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section reveal" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Domande Frequenti</span>
+          <h2 class="section-title">FAQ & Risposte Utili 🤔</h2>
+          <p class="section-subtitle">
+            Tutto quello che vuoi sapere sull'invio sicuro dei documenti, le automazioni e i tempi di sviluppo.
+          </p>
+        </div>
+
+        <div class="faq-accordion" id="faqAccordion">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Come funziona l'invio sicuro della documentazione con MandaloVia?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>MandaloVia genera link di download temporizzati e protetti. I clienti ed i partner ricevono solo i file necessari in piena conformità con il D.Lgs. 81/08, mentre tu puoi monitorare lo storico dei download effettuati in tempo reale.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Come funziona l'invio massivo di fino a 800 email di marketing?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Lo strumento automatizza l'invio di email promozionali personalizzando in automatico il nome del destinatario, l'azienda e la lingua (es. campagne in Italia e in Francia), allegando la brochure ufficiale senza rischiare blocchi o inserimenti manuali.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>La piattaforma Gestione Magazzino è multi-azienda?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Assolutamente sì! Ogni azienda dispone del proprio account protetto e vede solo i propri articoli, materiali in cantiere, movimenti e rientri con alert di sotto-soglia ed export in Excel.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Quali sono le tecnologie utilizzate per le Web App?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Utilizzo principalmente gli stack tecnologici avanzati Base44 ed Antigravity 2 per garantire interfacce ultra-veloci, reattive da mobile/tablet e sicure su cloud.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact reveal" id="contatti">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Contatti</span>
+          <h2 class="section-title">Scrivimi un Messaggio 💬</h2>
+          <p class="section-subtitle">
+            Puoi scrivermi direttamente via mail o compilare il modulo sottostante per collaborazioni o progetti.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Details -->
+          <div class="contact-info-card">
+            <h3 style="font-size: 1.3rem; margin-bottom: 1.2rem;">Recapiti Diretti</h3>
+
+            <div class="contact-method">
+              <div class="contact-icon">✉️</div>
+              <div class="contact-detail">
+                <h4>Email</h4>
+                <a href="mailto:chiarafrancescon003@gmail.com">chiarafrancescon003@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-method">
+              <div class="contact-icon">📞</div>
+              <div class="contact-detail">
+                <h4>Telefono</h4>
+                <a href="tel:+393487544168">+39 348 754 4168</a>
+              </div>
+            </div>
+
+            <button class="btn btn-outline" id="copyEmailBtn" style="width: 100%; margin-top: 1.2rem;">
+              Copia Email negli Appunti 📋
+            </button>
+          </div>
+
+          <!-- Contact Form -->
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label class="form-label" for="name">Nome e Cognome</label>
+              <input type="text" id="name" class="form-input" placeholder="Es. Mario Rossi" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Indirizzo Email</label>
+              <input type="email" id="email" class="form-input" placeholder="mario@azienda.it" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Messaggio / Richiesta</label>
+              <textarea id="message" class="form-textarea" placeholder="Descrivi brevemente il progetto o la richiesta..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Invia Messaggio 🎉
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Window -->
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal-container">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-body" id="modalBody">
+        <!-- Injected via main.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" style="display: flex; align-items: center; justify-content: center; gap: 0.8rem;">
+      <img src="/logo.jpg" alt="Logo Monogram" style="width: 24px; height: 24px; border-radius: 4px; object-fit: cover;">
+      <p>© 2026 Chiara Francescon — Soluzioni Digitali, Base44 & Automazioni. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

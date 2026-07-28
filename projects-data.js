@@ -1,5 +1,24 @@
 export const projectsData = [
   {
+    id: "gestore-appuntamenti-whatsapp",
+    title: "Gestore Appuntamenti & Promemoria WhatsApp",
+    category: "web-app",
+    categoryLabel: "Soluzione Web Cloud",
+    shortDesc: "Piattaforma web per la prenotazione autonoma degli appuntamenti con notifiche e promemoria automatici 1-Click via WhatsApp.",
+    fullDesc: "Gestore Appuntamenti WhatsApp: Piattaforma digitale progettata per la gestione integrata delle prenotazioni e la comunicazione rapida con i clienti. Permette ai clienti di scegliere il servizio ed il proprio slot orario preferito, fornendo all'attività una dashboard completa per l'invio immediato dei promemoria 1-Click su WhatsApp, abbattendo del 90% gli appuntamenti dimenticati.",
+    tags: ["WhatsApp API", "Gestione Appuntamenti", "Promemoria 1-Click", "Calendario Cloud", "Client Project"],
+    highlights: [
+      "Prenotazione autonoma del cliente con selezione slot orario e servizio",
+      "Generazione automatica e promemoria 1-Click via WhatsApp",
+      "Dashboard gestionale per il monitoraggio ed azzeramento no-show",
+      "Configurazione orari di apertura e durata prestazioni su misura"
+    ],
+    image: "whatsapp-appuntamenti",
+    badge: "🚧 Client Project (In Corso)",
+    liveUrl: "#",
+    githubUrl: "#"
+  },
+  {
     id: "mandalovia",
     title: "MandaloVia - Web Application Cloud",
     category: "web-app",
@@ -90,11 +109,11 @@ export const personalSkills = {
   ],
   competenzeLavorative: [
     "Sviluppo Soluzioni Base44 & Antigravity 2",
+    "Gestione Appuntamenti & Notifiche WhatsApp",
     "Gestione Magazzino & Tracciamento Materiali",
     "Piattaforme Web Eventi & Community",
     "Email Marketing Massivo (Fino a 800 Mail)",
-    "Gestione Documentazione Cantiere & D.Lgs. 81/08",
-    "Fatturazione & Preventivazione Commerciale"
+    "Gestione Documentazione Cantiere & D.Lgs. 81/08"
   ],
   lingue: [
     { lingua: "Italiano", livello: "Madrelingua 🇮🇹" },

@@ -448,7 +448,7 @@ function renderProjects(projects) {
           ` : `
             <div class="project-graphic-fallback">
               <span class="graphic-icon">
-                ${proj.id === 'excel-email-marketing' ? '📧' : proj.category === 'automations' ? '⚙️' : '⚡'}
+                ${proj.id === 'gestore-appuntamenti-whatsapp' ? '💬' : proj.id === 'excel-email-marketing' ? '📧' : proj.category === 'automations' ? '⚙️' : '⚡'}
               </span>
               <span class="graphic-label">${proj.categoryLabel}</span>
             </div>
@@ -556,7 +556,7 @@ function openProjectModal(project) {
       <img src="${imageSrc}" alt="${project.title}" class="modal-preview-img">
     ` : `
       <div style="padding: 2.2rem; background: #f1f5f9; border-radius: var(--radius-md); text-align: center; margin: 1.2rem 0; border: 1px solid var(--border-color);">
-        <span style="font-size: 3rem;">${project.id === 'excel-email-marketing' ? '📧' : '⚙️'}</span>
+        <span style="font-size: 3rem;">${project.id === 'gestore-appuntamenti-whatsapp' ? '💬' : project.id === 'excel-email-marketing' ? '📧' : '⚙️'}</span>
         <h4 style="margin-top: 0.4rem; color: var(--text-primary);">${project.title}</h4>
       </div>
     `}

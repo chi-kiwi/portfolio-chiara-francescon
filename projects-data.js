@@ -16,7 +16,7 @@ export const projectsData = [
     ],
     image: "clickflow",
     badge: "⚡ Nuovissima Web App",
-    liveUrl: "#",
+    liveUrl: "https://clickflow-meet.vercel.app/",
     githubUrl: "#"
   },
   {
@@ -76,6 +76,26 @@ export const projectsData = [
     image: "magazzino",
     badge: "⭐ Base44 Powered",
     liveUrl: "https://gestionemagazzino.base44.app/",
+    githubUrl: "#"
+  },
+  {
+    id: "eventiapp",
+    title: "EventiApp - Scopri, Vivi e Organizza Eventi",
+    category: "web-app",
+    categoryLabel: "Soluzione Antigravity 2",
+    shortDesc: "Piattaforma web e mobile per la scoperta e l'organizzazione di eventi locali, sagre e concerti con mappa interattiva e gestione staff.",
+    fullDesc: "EventiApp: Piattaforma integrata sviluppata con Antigravity 2 per la scoperta e promozione di eventi locali, sagre, concerti e serate nei locali. Offre ai partecipanti una mappa interattiva geolocalizzata per raggio (km), bacheca community in tempo reale, pass d'ingresso con QR Code, meteo live ed indicazioni stradali in 1-click. Per gli organizzatori fornisce la creazione assistita con autocompletamento indirizzi, allarme di prossimità entro 30 km per evitare sovrapposizioni, inviti staff con ID univoco e calcolo analitico delle scorte food & drink.",
+    tags: ["Antigravity 2", "EventiApp", "Mappa Geolocalizzata", "QR Code Pass", "Allarme Prossimità", "Gestione Staff"],
+    highlights: [
+      "Mappa interattiva e ricerca geolocalizzata per raggio (5, 10, 25, 50 km)",
+      "Bacheca community interattiva, biglietto digitale con QR Code e meteo live",
+      "Allarme automatico di prossimità entro 30 km per evitare sovrapposizioni tra eventi",
+      "Gestione rapida dello staff tramite ID Collaboratore univoco",
+      "Cruscotto analitico per monitoraggio partecipanti e stima scorte food & drink"
+    ],
+    image: "eventi",
+    badge: "🚧 Work in Progress",
+    liveUrl: "#",
     githubUrl: "#"
   },
   {

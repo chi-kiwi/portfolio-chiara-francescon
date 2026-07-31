@@ -1,5 +1,25 @@
 export const projectsData = [
   {
+    id: "clickflow",
+    title: "ClickFlow - Meeting Collaborativi & Controllo Remoto",
+    category: "web-app",
+    categoryLabel: "Piattaforma Web Cloud",
+    shortDesc: "Piattaforma web 100% cloud per video meeting HD, lavagna interattiva touch, assistenza remota in 1-click e verbale automatico con IA.",
+    fullDesc: "ClickFlow: Piattaforma integrata per riunioni collaborative senza limiti. Unisce video HD & audio 3D peer-to-peer, lavagna touch-friendly condivisa per PC e smartphone, assistenza remota co-browsing senza installare software terzi e generazione automatica dei verbali di meeting tramite Intelligenza Artificiale.",
+    tags: ["Web App Cloud", "Video HD 3D", "Lavagna Touch", "Co-Browsing Remoto", "Verbale IA", "Zero Install"],
+    highlights: [
+      "Conressione Peer-to-Peer istantanea con Video HD ed Audio 3D",
+      "Lavagna interattiva touch-friendly condivisa per PC, dita e penne capacitive",
+      "Controllo remoto e co-browsing della scheda web in 1-click per assistenza clienti",
+      "Trascrizione automatica del meeting, traduzione live e verbale IA via mail",
+      "100% Web-Based (Zero installazioni, connessione in meno di 3 secondi)"
+    ],
+    image: "clickflow",
+    badge: "⚡ Nuovissima Web App",
+    liveUrl: "#",
+    githubUrl: "#"
+  },
+  {
     id: "gestore-appuntamenti-whatsapp",
     title: "Gestore Appuntamenti & Promemoria WhatsApp",
     category: "web-app",
@@ -59,26 +79,6 @@ export const projectsData = [
     githubUrl: "#"
   },
   {
-    id: "eventiapp",
-    title: "EventiApp - Scopri, Vivi e Organizza Eventi",
-    category: "web-app",
-    categoryLabel: "Soluzione Antigravity 2",
-    shortDesc: "Piattaforma web e mobile per la scoperta e l'organizzazione di eventi locali, sagre e concerti con mappa interattiva e gestione staff.",
-    fullDesc: "EventiApp: Piattaforma integrata sviluppata con Antigravity 2 per la scoperta e promozione di eventi locali, sagre, concerti e serate nei locali. Offre ai partecipanti una mappa interattiva geolocalizzata per raggio (km), bacheca community in tempo reale, pass d'ingresso con QR Code, meteo live ed indicazioni stradali in 1-click. Per gli organizzatori fornisce la creazione assistita con autocompletamento indirizzi, allarme di prossimità entro 30 km per evitare sovrapposizioni, inviti staff con ID univoco e calcolo analitico delle scorte food & drink.",
-    tags: ["Antigravity 2", "EventiApp", "Mappa Geolocalizzata", "QR Code Pass", "Allarme Prossimità", "Gestione Staff"],
-    highlights: [
-      "Mappa interattiva e ricerca geolocalizzata per raggio (5, 10, 25, 50 km)",
-      "Bacheca community interattiva, biglietto digitale con QR Code e meteo live",
-      "Allarme automatico di prossimità entro 30 km per evitare sovrapposizioni tra eventi",
-      "Gestione rapida dello staff tramite ID Collaboratore univoco",
-      "Cruscotto analitico per monitoraggio partecipanti e stima scorte food & drink"
-    ],
-    image: "eventi",
-    badge: "🚧 Work in Progress",
-    liveUrl: "#",
-    githubUrl: "#"
-  },
-  {
     id: "excel-email-marketing",
     title: "Automazione Email Marketing Massivo (Excel)",
     category: "automations",
@@ -109,9 +109,9 @@ export const personalSkills = {
   ],
   competenzeLavorative: [
     "Sviluppo Soluzioni Base44 & Antigravity 2",
+    "Piattaforme Meeting & Co-Browsing Remoto",
     "Gestione Appuntamenti & Notifiche WhatsApp",
     "Gestione Magazzino & Tracciamento Materiali",
-    "Piattaforme Web Eventi & Community",
     "Email Marketing Massivo (Fino a 800 Mail)",
     "Gestione Documentazione Cantiere & D.Lgs. 81/08"
   ],

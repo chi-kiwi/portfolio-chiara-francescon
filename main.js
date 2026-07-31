@@ -431,6 +431,7 @@ function renderProjects(projects) {
 
   grid.innerHTML = projects.map(proj => {
     const imageMap = {
+      clickflow: '/clickflow.png',
       mandalovia: '/mandalovia.png',
       magazzino: '/magazzino.png',
       'excel-mail': '/email-marketing.png',
@@ -539,6 +540,7 @@ function openProjectModal(project) {
   if (!modal || !modalBody) return;
 
   const imageMap = {
+    clickflow: '/clickflow.png',
     mandalovia: '/mandalovia.png',
     magazzino: '/magazzino.png',
     'excel-mail': '/email-marketing.png',
@@ -566,7 +568,7 @@ function openProjectModal(project) {
     ${hasLiveUrl ? `
       <div style="margin-bottom: 1.5rem;">
         <a href="${project.liveUrl}" target="_blank" class="btn btn-primary" style="padding: 0.6rem 1.3rem; font-size: 0.9rem;">
-          Apri ${project.title} Live su Base44 🌐 ➔
+          Apri ${project.title} Live 🌐 ➔
         </a>
       </div>
     ` : ''}

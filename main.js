@@ -2,22 +2,39 @@ import { projectsData, personalSkills } from './projects-data.js';
 
 let audioEnabled = true;
 
-document.addEventListener('DOMContentLoaded', () => {
-  initNavbar();
-  initAudioToggle();
-  initScrollReveal();
-  renderSkills();
-  renderProjects(projectsData);
-  initFilters();
-  initModal();
-  initRoiCalculator();
-  initProjectConfigurator();
-  initFaqAccordion();
-  initPlaygroundQuiz();
-  initContactForm();
-  initInteractiveBadges();
-  initConfettiButton();
-});
+/* ==========================================================================
+   BULLETPROOF APP INITIALIZATION
+   ========================================================================== */
+function safeExec(fn, name) {
+  try {
+    fn();
+  } catch (err) {
+    console.error(`Error in ${name}:`, err);
+  }
+}
+
+function initApp() {
+  safeExec(initNavbar, 'initNavbar');
+  safeExec(initAudioToggle, 'initAudioToggle');
+  safeExec(initScrollReveal, 'initScrollReveal');
+  safeExec(renderSkills, 'renderSkills');
+  safeExec(() => renderProjects(projectsData), 'renderProjects');
+  safeExec(initFilters, 'initFilters');
+  safeExec(initModal, 'initModal');
+  safeExec(initRoiCalculator, 'initRoiCalculator');
+  safeExec(initProjectConfigurator, 'initProjectConfigurator');
+  safeExec(initFaqAccordion, 'initFaqAccordion');
+  safeExec(initPlaygroundQuiz, 'initPlaygroundQuiz');
+  safeExec(initContactForm, 'initContactForm');
+  safeExec(initInteractiveBadges, 'initInteractiveBadges');
+  safeExec(initConfettiButton, 'initConfettiButton');
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
 
 /* ==========================================================================
    WEB AUDIO API SOUND EFFECTS
@@ -59,7 +76,7 @@ function playPop() {
 function initAudioToggle() {
   const toggleBtn = document.getElementById('soundToggle');
   if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
+    toggleBtn.onclick = () => {
       audioEnabled = !audioEnabled;
       if (audioEnabled) {
         toggleBtn.classList.remove('muted');
@@ -71,15 +88,18 @@ function initAudioToggle() {
         toggleBtn.innerText = '🔇 Audio OFF';
         showToast('Effetti Audio Disattivati 🔇');
       }
-    });
+    };
   }
 }
 
 /* ==========================================================================
-   CONFETTI PARTICLE ENGINE
+   CONFETTI PARTICLE ENGINE (BULLETPROOF & HIGH VISIBILITY)
    ========================================================================== */
-function fireConfetti() {
-  playSuccessChime();
+export function fireConfetti() {
+  try {
+    playSuccessChime();
+  } catch (e) {}
+
   const canvas = document.getElementById('confettiCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
@@ -88,19 +108,19 @@ function fireConfetti() {
   canvas.height = window.innerHeight;
 
   const particles = [];
-  const colors = ['#2563eb', '#0d9488', '#f59e0b', '#ec4899', '#10b981'];
+  const colors = ['#2563eb', '#0d9488', '#f59e0b', '#ec4899', '#10b981', '#8b5cf6', '#ef4444'];
 
-  for (let i = 0; i < 60; i++) {
+  for (let i = 0; i < 120; i++) {
     particles.push({
       x: canvas.width / 2,
-      y: canvas.height / 2,
-      vx: (Math.random() - 0.5) * 14,
-      vy: (Math.random() - 0.7) * 16,
-      size: Math.random() * 8 + 4,
+      y: canvas.height * 0.35,
+      vx: (Math.random() - 0.5) * 22,
+      vy: (Math.random() - 0.7) * 22,
+      size: Math.random() * 10 + 5,
       color: colors[Math.floor(Math.random() * colors.length)],
       alpha: 1,
       rotation: Math.random() * 360,
-      spin: (Math.random() - 0.5) * 10
+      spin: (Math.random() - 0.5) * 14
     });
   }
 
@@ -113,8 +133,9 @@ function fireConfetti() {
     particles.forEach(p => {
       p.x += p.vx;
       p.y += p.vy;
-      p.vy += 0.35;
-      p.alpha -= 0.015;
+      p.vy += 0.42;
+      p.vx *= 0.98;
+      p.alpha -= 0.012;
       p.rotation += p.spin;
 
       if (p.alpha > 0) {
@@ -140,13 +161,16 @@ function fireConfetti() {
   render();
 }
 
+window.fireConfetti = fireConfetti;
+
 function initConfettiButton() {
   const funBtn = document.getElementById('heroBtnFun');
   if (funBtn) {
-    funBtn.addEventListener('click', () => {
+    funBtn.onclick = (e) => {
+      if (e) e.preventDefault();
       fireConfetti();
       showToast('🎉 Che la festa dell\'efficienza abbia inizio!');
-    });
+    };
   }
 }
 
@@ -175,10 +199,10 @@ function initRoiCalculator() {
     resMoneySaved.innerText = `€ ${money.toLocaleString('it-IT')}`;
   }
 
-  slider.addEventListener('input', () => {
+  slider.oninput = () => {
     playPop();
     updateCalculations();
-  });
+  };
 
   updateCalculations();
 }
@@ -196,25 +220,25 @@ function initProjectConfigurator() {
   let selectedUrgency = 'Entro 2 settimane (Priorità Alta)';
 
   typePills.forEach(pill => {
-    pill.addEventListener('click', () => {
+    pill.onclick = () => {
       playPop();
       typePills.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
       selectedType = pill.getAttribute('data-type');
-    });
+    };
   });
 
   urgencyPills.forEach(pill => {
-    pill.addEventListener('click', () => {
+    pill.onclick = () => {
       playPop();
       urgencyPills.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
       selectedUrgency = pill.getAttribute('data-urgency');
-    });
+    };
   });
 
   if (applyBtn && messageInput) {
-    applyBtn.addEventListener('click', () => {
+    applyBtn.onclick = () => {
       fireConfetti();
       messageInput.value = `Buongiorno Chiara,\n\nVorrei richiedere maggiori informazioni per un progetto di tipo: "${selectedType}".\nTempistica richiesta: ${selectedUrgency}.\n\nResto in attesa di un tuo riscontro!`;
       showToast('Richiesta configurata! Ti abbiamo indirizzato al form contatti 🚀');
@@ -223,7 +247,7 @@ function initProjectConfigurator() {
       if (contactSection) {
         contactSection.scrollIntoView({ behavior: 'smooth' });
       }
-    });
+    };
   }
 }
 
@@ -235,14 +259,14 @@ function initFaqAccordion() {
   faqItems.forEach(item => {
     const btn = item.querySelector('.faq-question');
     if (btn) {
-      btn.addEventListener('click', () => {
+      btn.onclick = () => {
         playPop();
         const isActive = item.classList.contains('active');
         faqItems.forEach(i => i.classList.remove('active'));
         if (!isActive) {
           item.classList.add('active');
         }
-      });
+      };
     }
   });
 }
@@ -252,6 +276,7 @@ function initFaqAccordion() {
    ========================================================================== */
 function initScrollReveal() {
   const reveals = document.querySelectorAll('.reveal');
+  if (!reveals.length) return;
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -287,17 +312,17 @@ function initInteractiveBadges() {
   const b2 = document.getElementById('badge2');
 
   if (b1) {
-    b1.addEventListener('click', () => {
+    b1.onclick = () => {
       playPop();
       showToast('⚡ "Sviluppo di Web App Cloud ad alte prestazioni con Base44 & Antigravity 2!"');
-    });
+    };
   }
 
   if (b2) {
-    b2.addEventListener('click', () => {
+    b2.onclick = () => {
       playPop();
       showToast('💡 "MandaloVia: la documentazione di cantiere in sicurezza e zero stress!"');
-    });
+    };
   }
 }
 
@@ -313,21 +338,21 @@ function initPlaygroundQuiz() {
   if (!step1 || !step2 || !result) return;
 
   step1.querySelectorAll('.quiz-opt').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    btn.onclick = () => {
       playPop();
-      userScore += parseInt(btn.getAttribute('data-score'));
+      userScore += parseInt(btn.getAttribute('data-score') || '1');
       step1.style.display = 'none';
       step2.style.display = 'block';
-    });
+    };
   });
 
   step2.querySelectorAll('.quiz-opt').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    btn.onclick = () => {
       playPop();
-      userScore += parseInt(btn.getAttribute('data-score'));
+      userScore += parseInt(btn.getAttribute('data-score') || '1');
       step2.style.display = 'none';
       renderQuizResult(userScore);
-    });
+    };
   });
 }
 
@@ -373,24 +398,26 @@ function initNavbar() {
   const mobileToggle = document.getElementById('mobileToggle');
   const navLinks = document.getElementById('navLinks');
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+  window.onscroll = () => {
+    if (navbar) {
+      if (window.scrollY > 30) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
     }
-  });
+  };
 
-  if (mobileToggle) {
-    mobileToggle.addEventListener('click', () => {
+  if (mobileToggle && navLinks) {
+    mobileToggle.onclick = () => {
       navLinks.classList.toggle('active');
-    });
+    };
   }
 
   document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-    });
+    link.onclick = () => {
+      if (navLinks) navLinks.classList.remove('active');
+    };
   });
 }
 
@@ -401,7 +428,7 @@ function renderSkills() {
   const skillsGrid = document.getElementById('skillsGrid');
   const pillsCloud = document.getElementById('pillsCloud');
 
-  if (skillsGrid) {
+  if (skillsGrid && personalSkills?.tecniche) {
     skillsGrid.innerHTML = personalSkills.tecniche.map(skill => `
       <div class="skill-item">
         <div class="skill-info">
@@ -415,7 +442,7 @@ function renderSkills() {
     `).join('');
   }
 
-  if (pillsCloud) {
+  if (pillsCloud && personalSkills?.competenzeLavorative) {
     pillsCloud.innerHTML = personalSkills.competenzeLavorative.map(comp => `
       <div class="pill-item">✓ ${comp}</div>
     `).join('');
@@ -427,7 +454,7 @@ function renderSkills() {
    ========================================================================== */
 function renderProjects(projects) {
   const grid = document.getElementById('projectsGrid');
-  if (!grid) return;
+  if (!grid || !projects) return;
 
   grid.innerHTML = projects.map(proj => {
     const imageMap = {
@@ -482,12 +509,12 @@ function renderProjects(projects) {
   }).join('');
 
   document.querySelectorAll('.btn-view-details').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    btn.onclick = (e) => {
       playPop();
       const projId = e.currentTarget.getAttribute('data-id');
       const project = projectsData.find(p => p.id === projId);
       if (project) openProjectModal(project);
-    });
+    };
   });
 }
 
@@ -497,7 +524,7 @@ function renderProjects(projects) {
 function initFilters() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.onclick = () => {
       playPop();
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
@@ -509,7 +536,7 @@ function initFilters() {
         const filtered = projectsData.filter(p => p.category === filter);
         renderProjects(filtered);
       }
-    });
+    };
   });
 }
 
@@ -521,23 +548,23 @@ function initModal() {
   const closeBtn = document.getElementById('modalClose');
 
   if (closeBtn && modal) {
-    closeBtn.addEventListener('click', () => {
+    closeBtn.onclick = () => {
       playPop();
       modal.classList.remove('active');
-    });
+    };
 
-    modal.addEventListener('click', (e) => {
+    modal.onclick = (e) => {
       if (e.target === modal) {
         modal.classList.remove('active');
       }
-    });
+    };
   }
 }
 
 function openProjectModal(project) {
   const modal = document.getElementById('projectModal');
   const modalBody = document.getElementById('modalBody');
-  if (!modal || !modalBody) return;
+  if (!modal || !modalBody || !project) return;
 
   const imageMap = {
     clickflow: '/clickflow.png',
@@ -594,19 +621,21 @@ function initContactForm() {
   const copyBtn = document.getElementById('copyEmailBtn');
 
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.onsubmit = (e) => {
       e.preventDefault();
       fireConfetti();
       showToast('Messaggio inviato con successo! Chiara ti risponderà a breve 🚀');
       form.reset();
-    });
+    };
   }
 
   if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
+    copyBtn.onclick = () => {
       playPop();
-      navigator.clipboard.writeText('chiarafrancescon003@gmail.com');
+      try {
+        navigator.clipboard.writeText('chiarafrancescon003@gmail.com');
+      } catch (e) {}
       showToast('Email chiarafrancescon003@gmail.com copiata negli appunti! 📋');
-    });
+    };
   }
 }

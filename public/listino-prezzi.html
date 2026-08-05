@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listino Prezzi — Chiara Francescon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --teal: #0d9488;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --text-light: #475569;
+      --border: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .header h1 span {
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+
+    .header .year-badge {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* CATEGORY CARD */
+    .category {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .category::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--blue), var(--teal));
+      border-radius: 4px 0 0 4px;
+    }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .category-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .category-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* PRICE ROW */
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .price-row:last-child {
+      border-bottom: none;
+    }
+
+    .price-name {
+      font-size: 0.92rem;
+      color: var(--text);
+      font-weight: 500;
+      flex: 1;
+    }
+
+    .price-detail {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+
+    .price-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-align: right;
+      white-space: nowrap;
+      min-width: 130px;
+    }
+
+    /* CONDITIONS */
+    .conditions {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      margin-top: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .conditions h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .conditions ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .conditions li {
+      padding: 0.45rem 0;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .conditions li::before {
+      content: '✓';
+      color: var(--teal);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 2px solid var(--border);
+    }
+
+    .footer .contact-line {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 0.3rem;
+    }
+
+    .footer .contact-line a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer .portfolio-link {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      body {
+        background: white;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page {
+        padding: 1rem 1.5rem;
+        max-width: 100%;
+      }
+
+      .category {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+      }
+
+      .conditions {
+        break-inside: avoid;
+        box-shadow: none;
+      }
+
+      .header {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+      }
+
+      .footer {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .price-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+      }
+
+      .price-value {
+        text-align: left;
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <div class="header">
+      <h1>Chiara <span>Francescon</span></h1>
+      <p class="subtitle">Listino Prezzi — Servizi Digitali</p>
+      <span class="year-badge">AGGIORNATO 2026</span>
+    </div>
+
+    <!-- LANDING PAGE -->
+    <div class="category">
+      <div class="category-header">
+        <div class="category-icon">🖥️</div>
+        <h2 class="category-title">Landing Page / Sito Vetrina</h2>
+      </div>
+      <div class="price-row">
+        <div class="price-name">One page semplice</div>
+        <div class="price-value">€150 — €250</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">Sito vetrina multi-pagina <span class="price-detail">(3-5 pagine)</span></div>
+        <div class="price-value">€300 — €500</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">Con animazioni avanzate e form contatto</div>
+        <div class="price-value">€400 — €600</div>
+      </div>
+    </div>
+
+    <!-- WEB APP CLOUD -->
+    <div class="category">
+      <div class="category-header">
+        <div class="category-icon">☁️</div>
+        <h2 class="category-title">Web App Cloud (Gestionali, CRM, Prenotazioni)</h2>
+      </div>
+      <div class="price-row">
+        <div class="price-name">App base <span class="price-detail">(1-3 funzionalità)</span></div>
+        <div class="price-value">€400 — €700</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">App media <span class="price-detail">(dashboard, login, gestione dati)</span></div>
+        <div class="price-value">€800 — €1.500</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">App complessa <span class="price-detail">(multi-utente, automazioni, report)</span></div>
+        <div class="price-value">€1.500 — €3.000</div>
+      </div>
+    </div>
+
+    <!-- AUTOMAZIONI -->
+    <div class="category">
+      <div class="category-header">
+        <div class="category-icon">⚙️</div>
+        <h2 class="category-title">Automazioni Aziendali</h2>
+      </div>
+      <div class="price-row">
+        <div class="price-name">Singolo flusso automatizzato</div>
+        <div class="price-value">€150 — €300</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">Sistema completo <span class="price-detail">(più flussi + integrazioni)</span></div>
+        <div class="price-value">€500 — €1.200</div>
+      </div>
+    </div>
+
+    <!-- MANUTENZIONE -->
+    <div class="category">
+      <div class="category-header">
+        <div class="category-icon">🛠️</div>
+        <h2 class="category-title">Manutenzione & Supporto</h2>
+      </div>
+      <div class="price-row">
+        <div class="price-name">Pacchetto mensile <span class="price-detail">(aggiornamenti + assistenza)</span></div>
+        <div class="price-value">€80 — €150/mese</div>
+      </div>
+      <div class="price-row">
+        <div class="price-name">Intervento singolo / modifica</div>
+        <div class="price-value">€50 — €100</div>
+      </div>
+    </div>
+
+    <!-- CONDITIONS -->
+    <div class="conditions">
+      <h3>Condizioni & Note</h3>
+      <ul>
+        <li>Acconto 50% prima di iniziare il progetto</li>
+        <li>Saldo 50% alla consegna, prima del deploy definitivo</li>
+        <li>Revisioni incluse: 2 (base), 4 (standard), illimitate (premium)</li>
+        <li>Consulenza iniziale gratuita e senza impegno</li>
+        <li>I prezzi sono indicativi e possono variare in base alla complessità del progetto</li>
+      </ul>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p class="contact-line">✉️ <a href="mailto:chiarafrancescon003@gmail.com">chiarafrancescon003@gmail.com</a></p>
+      <p class="contact-line">📞 <a href="tel:+393487544168">+39 348 754 4168</a></p>
+      <a href="https://portfolio-chiara-francescon.vercel.app" target="_blank" class="portfolio-link">
+        Visita il Portfolio ➔
+      </a>
+    </div>
+  </div>
+</body>
+</html>

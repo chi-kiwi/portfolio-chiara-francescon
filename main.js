@@ -644,15 +644,17 @@ function initContactForm() {
 }
 
 /* ==========================================================================
-   INTERACTIVE CAD SKETCHBOARD (AUTOCAD & CLICKFLOW INSPIRED)
+   INTERACTIVE CAD SKETCHBOARD PRO (AUTOCAD & CLICKFLOW ENGINE)
    ========================================================================== */
 function initWhiteboard() {
   const canvas = document.getElementById('whiteboardCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
+  const coordsEl = document.getElementById('wbCadCoords');
+  const modeEl = document.getElementById('wbCadMode');
 
   let isDrawing = false;
-  let currentTool = 'pen'; // 'pen', 'line', 'rect', 'circle', 'eraser'
+  let currentTool = 'pen'; // 'pen', 'line', 'ortho', 'rect', 'circle', 'text', 'eraser'
   let currentColor = '#2563eb';
   let strokeWidth = 3;
   let showGrid = true;
@@ -660,6 +662,13 @@ function initWhiteboard() {
   let startX = 0;
   let startY = 0;
   let snapshot = null;
+  let historyStack = [];
+  const MAX_HISTORY = 25;
+
+  function saveHistory() {
+    if (historyStack.length >= MAX_HISTORY) historyStack.shift();
+    historyStack.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+  }
 
   function drawGrid(context, width, height) {
     if (!showGrid) return;
@@ -696,6 +705,8 @@ function initWhiteboard() {
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, rect.width, rect.height);
     drawGrid(ctx, rect.width, rect.height);
+    historyStack = [];
+    saveHistory();
   }
 
   resizeCanvas();
@@ -706,18 +717,35 @@ function initWhiteboard() {
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;
     return {
-      x: clientX - rect.left,
-      y: clientY - rect.top
+      x: Math.round(clientX - rect.left),
+      y: Math.round(clientY - rect.top)
     };
   }
 
+  function updateStatus(x, y) {
+    if (coordsEl) coordsEl.innerText = `Coordinate X: ${x}px | Y: ${y}px`;
+  }
+
   function startDrawing(e) {
-    isDrawing = true;
     const pos = getPos(e);
+    updateStatus(pos.x, pos.y);
+
+    if (currentTool === 'text') {
+      const text = prompt('Inserisci la quota / testo dell\'annotazione CAD:');
+      if (text) {
+        saveHistory();
+        ctx.fillStyle = currentColor;
+        ctx.font = `600 ${Math.max(12, strokeWidth * 4)}px sans-serif`;
+        ctx.fillText(text, pos.x, pos.y);
+        showToast('Annotazione testo inserita! 🔤');
+      }
+      return;
+    }
+
+    saveHistory();
+    isDrawing = true;
     startX = pos.x;
     startY = pos.y;
-
-    const rect = canvas.getBoundingClientRect();
     snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
     ctx.beginPath();
@@ -725,10 +753,11 @@ function initWhiteboard() {
   }
 
   function draw(e) {
+    const pos = getPos(e);
+    updateStatus(pos.x, pos.y);
+
     if (!isDrawing) return;
     if (e.cancelable) e.preventDefault();
-
-    const pos = getPos(e);
 
     ctx.strokeStyle = currentTool === 'eraser' ? '#ffffff' : currentColor;
     ctx.lineWidth = currentTool === 'eraser' ? strokeWidth * 3 : strokeWidth;
@@ -737,13 +766,22 @@ function initWhiteboard() {
       ctx.lineTo(pos.x, pos.y);
       ctx.stroke();
     } else {
-      // Restore snapshot for live preview of shapes/lines
       ctx.putImageData(snapshot, 0, 0);
       ctx.beginPath();
 
       if (currentTool === 'line') {
         ctx.moveTo(startX, startY);
         ctx.lineTo(pos.x, pos.y);
+      } else if (currentTool === 'ortho') {
+        // Ortho 90° lock: calculate horizontal vs vertical distance
+        const dx = Math.abs(pos.x - startX);
+        const dy = Math.abs(pos.y - startY);
+        ctx.moveTo(startX, startY);
+        if (dx > dy) {
+          ctx.lineTo(pos.x, startY); // Horizontal line
+        } else {
+          ctx.lineTo(startX, pos.y); // Vertical line
+        }
       } else if (currentTool === 'rect') {
         ctx.strokeRect(startX, startY, pos.x - startX, pos.y - startY);
       } else if (currentTool === 'circle') {
@@ -774,28 +812,53 @@ function initWhiteboard() {
   canvas.addEventListener('touchmove', draw, { passive: false });
   canvas.addEventListener('touchend', stopDrawing);
 
-  // Colors
+  // Colors & Custom Color Picker
   const colorBtns = document.querySelectorAll('.wb-color-btn');
+  const customColorInput = document.getElementById('wbCustomColorPicker');
+
   colorBtns.forEach(btn => {
     btn.onclick = () => {
       if (currentTool === 'eraser') setTool('pen');
       currentColor = btn.getAttribute('data-color');
       colorBtns.forEach(b => b.style.boxShadow = '0 0 0 1px #cbd5e1');
       btn.style.boxShadow = `0 0 0 2px ${currentColor}`;
+      if (customColorInput) customColorInput.value = currentColor;
     };
   });
+
+  if (customColorInput) {
+    customColorInput.oninput = () => {
+      if (currentTool === 'eraser') setTool('pen');
+      currentColor = customColorInput.value;
+      colorBtns.forEach(b => b.style.boxShadow = '0 0 0 1px #cbd5e1');
+    };
+  }
 
   // Tools Selection
   const tools = {
     pen: document.getElementById('wbToolPen'),
     line: document.getElementById('wbToolLine'),
+    ortho: document.getElementById('wbToolOrtho'),
     rect: document.getElementById('wbToolRect'),
     circle: document.getElementById('wbToolCircle'),
+    text: document.getElementById('wbToolText'),
     eraser: document.getElementById('wbToolEraser')
+  };
+
+  const toolLabels = {
+    pen: '🖊️ Penna Libera',
+    line: '📏 Linea Dritta',
+    ortho: '📌 Orto 90° (Orizzontale/Verticale)',
+    rect: '🔲 Rettangolo CAD',
+    circle: '⭕ Cerchio CAD',
+    text: '🔤 Testo & Quota',
+    eraser: '🧹 Gomma'
   };
 
   function setTool(toolName) {
     currentTool = toolName;
+    if (modeEl) modeEl.innerText = `Strumento: ${toolLabels[toolName] || toolName}`;
+
     Object.keys(tools).forEach(key => {
       const btn = tools[key];
       if (btn) {
@@ -812,8 +875,10 @@ function initWhiteboard() {
 
   if (tools.pen) tools.pen.onclick = () => setTool('pen');
   if (tools.line) tools.line.onclick = () => setTool('line');
+  if (tools.ortho) tools.ortho.onclick = () => setTool('ortho');
   if (tools.rect) tools.rect.onclick = () => setTool('rect');
   if (tools.circle) tools.circle.onclick = () => setTool('circle');
+  if (tools.text) tools.text.onclick = () => setTool('text');
   if (tools.eraser) tools.eraser.onclick = () => setTool('eraser');
 
   // Size Slider
@@ -841,10 +906,26 @@ function initWhiteboard() {
     };
   }
 
+  // Undo Button
+  const undoBtn = document.getElementById('wbUndoBtn');
+  if (undoBtn) {
+    undoBtn.onclick = () => {
+      if (historyStack.length > 1) {
+        historyStack.pop();
+        const prevSnapshot = historyStack[historyStack.length - 1];
+        ctx.putImageData(prevSnapshot, 0, 0);
+        showToast('Azione annullata ↩️');
+      } else {
+        showToast('Nessuna azione da annullare');
+      }
+    };
+  }
+
   // Clear Button
   const clearBtn = document.getElementById('wbClearBtn');
   if (clearBtn) {
     clearBtn.onclick = () => {
+      saveHistory();
       const rect = canvas.getBoundingClientRect();
       ctx.fillStyle = '#ffffff';
       ctx.fillRect(0, 0, rect.width, rect.height);

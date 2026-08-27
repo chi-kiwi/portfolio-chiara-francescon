@@ -1,18 +1,18 @@
 export const projectsData = [
   {
-    id: "teambuilder-flow",
-    title: "TeamBuilder Flow - Gestione Operai, Cantieri & Mezzi",
+    id: "gestione-squadre-teambuilder",
+    title: "Gestione Squadre Cantieri - TeamBuilder Flow",
     category: "web-app",
     categoryLabel: "Piattaforma Web Cloud",
-    shortDesc: "Piattaforma web 100% cloud per l'assegnazione automatica di operai e flotta mezzi, gestione cantieri e pianificazione settimanale.",
-    fullDesc: "TeamBuilder Flow: Piattaforma web avanzata per l'organizzazione ed il controllo integrato dei cantieri aziendali. Tramite un algoritmo intelligente distribuisce operai e mezzi rispettando vincoli logistici, competenze, trasferte e urgenze. Gestisce i livelli di esperienza ed il magazzino, monitora la flotta (furgoni, camion, attrezzature) ed offre una pianificazione settimanale visiva a colonne con esportazione diretta in Excel.",
-    tags: ["Base44", "Piattaforma Cloud", "Assegnazione Operai", "Gestione Cantieri", "Flotta Mezzi", "Pianificazione Settimanale", "Export Excel"],
+    shortDesc: "Piattaforma web 100% cloud per la creazione automatica delle squadre di lavoro nei cantieri, composizione operai per competenze e gestione flotta mezzi.",
+    fullDesc: "Gestione Squadre Cantieri (TeamBuilder Flow): Piattaforma web avanzata progettata per la composizione e l'organizzazione ottimizzata delle squadre di lavoro nei cantieri. Tramite un algoritmo intelligente distribuisce operai e mezzi rispettando la difficoltà del cantiere, i livelli di esperienza degli operatori, le patenti, le disponibilità per trasferte ed i requisiti normativi. Gestisce il tracciamento della flotta mezzi (furgoni, camion, attrezzature) e la pianificazione settimanale a colonne con esportazione diretta in Excel.",
+    tags: ["Base44", "Gestione Squadre", "Assegnazione Operai", "Piattaforma Cloud", "Gestione Cantieri", "Flotta Mezzi", "Export Excel"],
     highlights: [
-      "Assegnazione automatica intelligente di operai e mezzi per vincoli, urgenze e trasferte",
-      "Gestione operai per esperienza, patenti, disponibilità ed addetti magazzino",
-      "Monitoraggio completo cantieri e flotta mezzi (furgoni, camion, attrezzature)",
-      "Pianificazione settimanale visiva a colonne con vista giorno ed anteprima live",
-      "Export Excel formattato e pronto da stampare o condividere in 1-click"
+      "Composizione automatica ed intelligente delle squadre di lavoro in base ai requisiti di cantiere",
+      "Gestione dettagliata operai (livello esperienza, patenti, trasferte e disponibilità)",
+      "Monitoraggio della flotta mezzi (furgoni, camion ed attrezzature sempre disponibili e tracciati)",
+      "Pianificazione settimanale visiva a colonne con anteprima immediata",
+      "Esportazione in 1-click del piano settimanale formattato in Excel pronto da stampare"
     ],
     image: "teambuilder",
     badge: "⭐ Base44 Cloud App",
@@ -149,7 +149,7 @@ export const personalSkills = {
   ],
   competenzeLavorative: [
     "Sviluppo Soluzioni Base44 & Antigravity 2",
-    "TeamBuilder Flow — Gestione Operai & Cantieri",
+    "Gestione Squadre Cantieri — TeamBuilder Flow",
     "Piattaforme Meeting & Co-Browsing Remoto",
     "Gestione Appuntamenti & Notifiche WhatsApp",
     "Gestione Magazzino & Tracciamento Materiali",

@@ -1,5 +1,25 @@
 export const projectsData = [
   {
+    id: "teambuilder-flow",
+    title: "TeamBuilder Flow - Gestione Operai, Cantieri & Mezzi",
+    category: "web-app",
+    categoryLabel: "Piattaforma Web Cloud",
+    shortDesc: "Piattaforma web 100% cloud per l'assegnazione automatica di operai e flotta mezzi, gestione cantieri e pianificazione settimanale.",
+    fullDesc: "TeamBuilder Flow: Piattaforma web avanzata per l'organizzazione ed il controllo integrato dei cantieri aziendali. Tramite un algoritmo intelligente distribuisce operai e mezzi rispettando vincoli logistici, competenze, trasferte e urgenze. Gestisce i livelli di esperienza ed il magazzino, monitora la flotta (furgoni, camion, attrezzature) ed offre una pianificazione settimanale visiva a colonne con esportazione diretta in Excel.",
+    tags: ["Base44", "Piattaforma Cloud", "Assegnazione Operai", "Gestione Cantieri", "Flotta Mezzi", "Pianificazione Settimanale", "Export Excel"],
+    highlights: [
+      "Assegnazione automatica intelligente di operai e mezzi per vincoli, urgenze e trasferte",
+      "Gestione operai per esperienza, patenti, disponibilità ed addetti magazzino",
+      "Monitoraggio completo cantieri e flotta mezzi (furgoni, camion, attrezzature)",
+      "Pianificazione settimanale visiva a colonne con vista giorno ed anteprima live",
+      "Export Excel formattato e pronto da stampare o condividere in 1-click"
+    ],
+    image: "teambuilder",
+    badge: "⭐ Base44 Cloud App",
+    liveUrl: "https://team-builder-flow.base44.app",
+    githubUrl: "#"
+  },
+  {
     id: "clickflow",
     title: "ClickFlow - Meeting Collaborativi & Controllo Remoto",
     category: "web-app",
@@ -8,7 +28,7 @@ export const projectsData = [
     fullDesc: "ClickFlow: Piattaforma integrata per riunioni collaborative senza limiti. Unisce video HD & audio 3D peer-to-peer, lavagna touch-friendly condivisa per PC e smartphone, assistenza remota co-browsing senza installare software terzi e generazione automatica dei verbali di meeting tramite Intelligenza Artificiale.",
     tags: ["Web App Cloud", "Video HD 3D", "Lavagna Touch", "Co-Browsing Remoto", "Verbale IA", "Zero Install"],
     highlights: [
-      "Conressione Peer-to-Peer istantanea con Video HD ed Audio 3D",
+      "Connessione Peer-to-Peer istantanea con Video HD ed Audio 3D",
       "Lavagna interattiva touch-friendly condivisa per PC, dita e penne capacitive",
       "Controllo remoto e co-browsing della scheda web in 1-click per assistenza clienti",
       "Trascrizione automatica del meeting, traduzione live e verbale IA via mail",
@@ -16,7 +36,7 @@ export const projectsData = [
     ],
     image: "clickflow",
     badge: "⚡ Nuovissima Web App",
-    liveUrl: "https://clickflow-meet.vercel.app/",
+    liveUrl: "#",
     githubUrl: "#"
   },
   {
@@ -129,6 +149,7 @@ export const personalSkills = {
   ],
   competenzeLavorative: [
     "Sviluppo Soluzioni Base44 & Antigravity 2",
+    "TeamBuilder Flow — Gestione Operai & Cantieri",
     "Piattaforme Meeting & Co-Browsing Remoto",
     "Gestione Appuntamenti & Notifiche WhatsApp",
     "Gestione Magazzino & Tracciamento Materiali",

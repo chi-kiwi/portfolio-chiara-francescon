@@ -458,6 +458,7 @@ function renderProjects(projects) {
 
   grid.innerHTML = projects.map(proj => {
     const imageMap = {
+      teambuilder: '/teambuilder.png',
       clickflow: '/clickflow.png',
       mandalovia: '/mandalovia.png',
       magazzino: '/magazzino.png',
@@ -567,6 +568,7 @@ function openProjectModal(project) {
   if (!modal || !modalBody || !project) return;
 
   const imageMap = {
+    teambuilder: '/teambuilder.png',
     clickflow: '/clickflow.png',
     mandalovia: '/mandalovia.png',
     magazzino: '/magazzino.png',

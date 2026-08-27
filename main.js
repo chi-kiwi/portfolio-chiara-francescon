@@ -644,7 +644,7 @@ function initContactForm() {
 }
 
 /* ==========================================================================
-   INTERACTIVE WHITEBOARD / SKETCHBOARD (CLICKFLOW INSPIRED)
+   INTERACTIVE CAD SKETCHBOARD (AUTOCAD & CLICKFLOW INSPIRED)
    ========================================================================== */
 function initWhiteboard() {
   const canvas = document.getElementById('whiteboardCanvas');
@@ -652,9 +652,37 @@ function initWhiteboard() {
   const ctx = canvas.getContext('2d');
 
   let isDrawing = false;
+  let currentTool = 'pen'; // 'pen', 'line', 'rect', 'circle', 'eraser'
   let currentColor = '#2563eb';
-  let strokeWidth = 4;
-  let isEraser = false;
+  let strokeWidth = 3;
+  let showGrid = true;
+
+  let startX = 0;
+  let startY = 0;
+  let snapshot = null;
+
+  function drawGrid(context, width, height) {
+    if (!showGrid) return;
+    context.save();
+    context.strokeStyle = '#e2e8f0';
+    context.lineWidth = 0.5;
+    const gridSize = 20;
+
+    for (let x = gridSize; x < width; x += gridSize) {
+      context.beginPath();
+      context.moveTo(x, 0);
+      context.lineTo(x, height);
+      context.stroke();
+    }
+
+    for (let y = gridSize; y < height; y += gridSize) {
+      context.beginPath();
+      context.moveTo(0, y);
+      context.lineTo(width, y);
+      context.stroke();
+    }
+    context.restore();
+  }
 
   function resizeCanvas() {
     const rect = canvas.parentElement.getBoundingClientRect();
@@ -664,8 +692,10 @@ function initWhiteboard() {
     ctx.scale(dpr, dpr);
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
+
     ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, rect.width, rect.height);
+    drawGrid(ctx, rect.width, rect.height);
   }
 
   resizeCanvas();
@@ -684,18 +714,44 @@ function initWhiteboard() {
   function startDrawing(e) {
     isDrawing = true;
     const pos = getPos(e);
+    startX = pos.x;
+    startY = pos.y;
+
+    const rect = canvas.getBoundingClientRect();
+    snapshot = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
     ctx.beginPath();
-    ctx.moveTo(pos.x, pos.y);
+    ctx.moveTo(startX, startY);
   }
 
   function draw(e) {
     if (!isDrawing) return;
     if (e.cancelable) e.preventDefault();
+
     const pos = getPos(e);
-    ctx.strokeStyle = isEraser ? '#ffffff' : currentColor;
-    ctx.lineWidth = isEraser ? strokeWidth * 3 : strokeWidth;
-    ctx.lineTo(pos.x, pos.y);
-    ctx.stroke();
+
+    ctx.strokeStyle = currentTool === 'eraser' ? '#ffffff' : currentColor;
+    ctx.lineWidth = currentTool === 'eraser' ? strokeWidth * 3 : strokeWidth;
+
+    if (currentTool === 'pen' || currentTool === 'eraser') {
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+    } else {
+      // Restore snapshot for live preview of shapes/lines
+      ctx.putImageData(snapshot, 0, 0);
+      ctx.beginPath();
+
+      if (currentTool === 'line') {
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(pos.x, pos.y);
+      } else if (currentTool === 'rect') {
+        ctx.strokeRect(startX, startY, pos.x - startX, pos.y - startY);
+      } else if (currentTool === 'circle') {
+        const radius = Math.sqrt(Math.pow(pos.x - startX, 2) + Math.pow(pos.y - startY, 2));
+        ctx.arc(startX, startY, radius, 0, 2 * Math.PI);
+      }
+      ctx.stroke();
+    }
   }
 
   function stopDrawing() {
@@ -705,67 +761,62 @@ function initWhiteboard() {
     }
   }
 
-  // Mouse listeners
+  // Mouse events
   canvas.addEventListener('mousedown', startDrawing);
   canvas.addEventListener('mousemove', draw);
   canvas.addEventListener('mouseup', stopDrawing);
   canvas.addEventListener('mouseleave', stopDrawing);
 
-  // Touch listeners for mobile & tablets
+  // Touch events
   canvas.addEventListener('touchstart', (e) => {
     startDrawing(e);
   }, { passive: true });
   canvas.addEventListener('touchmove', draw, { passive: false });
   canvas.addEventListener('touchend', stopDrawing);
 
-  // Toolbar events
+  // Colors
   const colorBtns = document.querySelectorAll('.wb-color-btn');
   colorBtns.forEach(btn => {
     btn.onclick = () => {
-      isEraser = false;
+      if (currentTool === 'eraser') setTool('pen');
       currentColor = btn.getAttribute('data-color');
       colorBtns.forEach(b => b.style.boxShadow = '0 0 0 1px #cbd5e1');
       btn.style.boxShadow = `0 0 0 2px ${currentColor}`;
-      const pen = document.getElementById('wbToolPen');
-      const eraser = document.getElementById('wbToolEraser');
-      if (pen) {
-        pen.style.background = 'var(--accent-primary)';
-        pen.style.color = '#ffffff';
-      }
-      if (eraser) {
-        eraser.style.background = '#ffffff';
-        eraser.style.color = 'var(--text-primary)';
-      }
     };
   });
 
-  const toolPen = document.getElementById('wbToolPen');
-  const toolEraser = document.getElementById('wbToolEraser');
+  // Tools Selection
+  const tools = {
+    pen: document.getElementById('wbToolPen'),
+    line: document.getElementById('wbToolLine'),
+    rect: document.getElementById('wbToolRect'),
+    circle: document.getElementById('wbToolCircle'),
+    eraser: document.getElementById('wbToolEraser')
+  };
 
-  if (toolPen) {
-    toolPen.onclick = () => {
-      isEraser = false;
-      toolPen.style.background = 'var(--accent-primary)';
-      toolPen.style.color = '#ffffff';
-      if (toolEraser) {
-        toolEraser.style.background = '#ffffff';
-        toolEraser.style.color = 'var(--text-primary)';
+  function setTool(toolName) {
+    currentTool = toolName;
+    Object.keys(tools).forEach(key => {
+      const btn = tools[key];
+      if (btn) {
+        if (key === toolName) {
+          btn.style.background = 'var(--accent-primary)';
+          btn.style.color = '#ffffff';
+        } else {
+          btn.style.background = '#ffffff';
+          btn.style.color = 'var(--text-primary)';
+        }
       }
-    };
+    });
   }
 
-  if (toolEraser) {
-    toolEraser.onclick = () => {
-      isEraser = true;
-      toolEraser.style.background = 'var(--accent-primary)';
-      toolEraser.style.color = '#ffffff';
-      if (toolPen) {
-        toolPen.style.background = '#ffffff';
-        toolPen.style.color = 'var(--text-primary)';
-      }
-    };
-  }
+  if (tools.pen) tools.pen.onclick = () => setTool('pen');
+  if (tools.line) tools.line.onclick = () => setTool('line');
+  if (tools.rect) tools.rect.onclick = () => setTool('rect');
+  if (tools.circle) tools.circle.onclick = () => setTool('circle');
+  if (tools.eraser) tools.eraser.onclick = () => setTool('eraser');
 
+  // Size Slider
   const sizeSlider = document.getElementById('wbSizeSlider');
   if (sizeSlider) {
     sizeSlider.oninput = () => {
@@ -773,24 +824,44 @@ function initWhiteboard() {
     };
   }
 
+  // Grid Toggle
+  const toggleGridBtn = document.getElementById('wbToggleGrid');
+  if (toggleGridBtn) {
+    toggleGridBtn.onclick = () => {
+      showGrid = !showGrid;
+      toggleGridBtn.innerText = showGrid ? '📐 Griglia ON' : '📐 Griglia OFF';
+      toggleGridBtn.style.background = showGrid ? '#eff6ff' : '#f1f5f9';
+      toggleGridBtn.style.color = showGrid ? 'var(--accent-primary)' : 'var(--text-secondary)';
+
+      const rect = canvas.getBoundingClientRect();
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, rect.width, rect.height);
+      drawGrid(ctx, rect.width, rect.height);
+      showToast(showGrid ? 'Griglia CAD attivata 📐' : 'Griglia disattivata');
+    };
+  }
+
+  // Clear Button
   const clearBtn = document.getElementById('wbClearBtn');
   if (clearBtn) {
     clearBtn.onclick = () => {
       const rect = canvas.getBoundingClientRect();
       ctx.fillStyle = '#ffffff';
       ctx.fillRect(0, 0, rect.width, rect.height);
+      drawGrid(ctx, rect.width, rect.height);
       showToast('Lavagna pulita 🧹');
     };
   }
 
+  // Download PNG
   const downloadBtn = document.getElementById('wbDownloadBtn');
   if (downloadBtn) {
     downloadBtn.onclick = () => {
       const link = document.createElement('a');
-      link.download = 'schizzo-chiara-francescon.png';
+      link.download = 'disegno-cad-chiara-francescon.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
-      showToast('Disegno scaricato in PNG! 🎨');
+      showToast('Disegno CAD scaricato in PNG! 📐');
     };
   }
 }

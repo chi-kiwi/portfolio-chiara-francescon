@@ -262,49 +262,54 @@
           </div>
         </div>
 
-        <!-- Widget 3: Interactive Whiteboard / Lavagna Interattiva -->
+        <!-- Widget 3: Interactive AutoCAD Style CAD Sketchboard -->
         <div class="widget-card" style="margin-bottom: 3rem;">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem;">
-            <span class="section-tag">Lavagna Touch & Sketch 🎨</span>
-            <span style="font-size: 0.78rem; font-weight: 600; color: var(--accent-teal); background: #f0fdf4; padding: 0.25rem 0.6rem; border-radius: var(--radius-full); border: 1px solid #bbf7d0;">💡 Ispirata alla tecnologia ClickFlow</span>
+            <span class="section-tag">Lavagna CAD & AutoCAD Sketch 📐</span>
+            <span style="font-size: 0.78rem; font-weight: 600; color: var(--accent-primary); background: var(--accent-light); padding: 0.25rem 0.6rem; border-radius: var(--radius-full); border: 1px solid rgba(37,99,235,0.2);">📐 AutoCAD Style & ClickFlow Engine</span>
           </div>
-          <h3 class="widget-title">Lavagna Interattiva di Prova</h3>
-          <p class="widget-subtitle">Disegna schemi, annota idee o fai uno schizzo al volo direttamente dal tuo schermo o smartphone!</p>
+          <h3 class="widget-title">Lavagna Tecnica & Disegno CAD</h3>
+          <p class="widget-subtitle">Disegna linee dritte di precisione, forme geometriche (rettangoli, cerchi), attiva la griglia tecnica o traccia a mano libera!</p>
 
           <div class="whiteboard-box" style="background: #f8fafc; border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
             <!-- Toolbar -->
-            <div class="whiteboard-toolbar" style="display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; background: #ffffff; padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+            <div class="whiteboard-toolbar" style="display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; background: #ffffff; padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
               <!-- Colors -->
-              <div style="display: flex; align-items: center; gap: 0.4rem;" id="wbColorPicker">
+              <div style="display: flex; align-items: center; gap: 0.35rem;" id="wbColorPicker">
                 <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);">Colore:</span>
-                <button class="wb-color-btn active" data-color="#2563eb" style="background: #2563eb; width: 26px; height: 26px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 2px #2563eb; cursor: pointer;" title="Blu"></button>
-                <button class="wb-color-btn" data-color="#0d9488" style="background: #0d9488; width: 26px; height: 26px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Teal"></button>
-                <button class="wb-color-btn" data-color="#8b5cf6" style="background: #8b5cf6; width: 26px; height: 26px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Viola"></button>
-                <button class="wb-color-btn" data-color="#ef4444" style="background: #ef4444; width: 26px; height: 26px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Rosso"></button>
-                <button class="wb-color-btn" data-color="#0f172a" style="background: #0f172a; width: 26px; height: 26px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Nero"></button>
+                <button class="wb-color-btn active" data-color="#2563eb" style="background: #2563eb; width: 24px; height: 24px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 2px #2563eb; cursor: pointer;" title="Blu"></button>
+                <button class="wb-color-btn" data-color="#0d9488" style="background: #0d9488; width: 24px; height: 24px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Teal"></button>
+                <button class="wb-color-btn" data-color="#ef4444" style="background: #ef4444; width: 24px; height: 24px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Rosso"></button>
+                <button class="wb-color-btn" data-color="#0f172a" style="background: #0f172a; width: 24px; height: 24px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Nero"></button>
               </div>
 
-              <!-- Tools -->
-              <div style="display: flex; align-items: center; gap: 0.4rem;">
-                <button class="wb-tool-btn active" id="wbToolPen" style="padding: 0.35rem 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--accent-primary); color: white; font-weight: 600; font-size: 0.8rem; cursor: pointer;">🖊️ Penna</button>
-                <button class="wb-tool-btn" id="wbToolEraser" style="padding: 0.35rem 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: #ffffff; color: var(--text-primary); font-weight: 600; font-size: 0.8rem; cursor: pointer;">🧹 Gomma</button>
+              <!-- Tools: Pen, Line, Rect, Circle, Eraser -->
+              <div style="display: flex; align-items: center; gap: 0.35rem; flex-wrap: wrap;" id="wbToolsGroup">
+                <button class="wb-tool-btn active" id="wbToolPen" style="padding: 0.3rem 0.65rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--accent-primary); color: white; font-weight: 600; font-size: 0.78rem; cursor: pointer;">🖊️ Penna</button>
+                <button class="wb-tool-btn" id="wbToolLine" style="padding: 0.3rem 0.65rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: #ffffff; color: var(--text-primary); font-weight: 600; font-size: 0.78rem; cursor: pointer;">📏 Linea Dritta</button>
+                <button class="wb-tool-btn" id="wbToolRect" style="padding: 0.3rem 0.65rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: #ffffff; color: var(--text-primary); font-weight: 600; font-size: 0.78rem; cursor: pointer;">🔲 Rettangolo</button>
+                <button class="wb-tool-btn" id="wbToolCircle" style="padding: 0.3rem 0.65rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: #ffffff; color: var(--text-primary); font-weight: 600; font-size: 0.78rem; cursor: pointer;">⭕ Cerchio</button>
+                <button class="wb-tool-btn" id="wbToolEraser" style="padding: 0.3rem 0.65rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: #ffffff; color: var(--text-primary); font-weight: 600; font-size: 0.78rem; cursor: pointer;">🧹 Gomma</button>
               </div>
 
-              <!-- Size slider -->
-              <div style="display: flex; align-items: center; gap: 0.4rem;">
-                <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);">Tratto:</span>
-                <input type="range" id="wbSizeSlider" min="2" max="24" value="4" style="width: 80px; accent-color: var(--accent-primary); cursor: pointer;">
+              <!-- Size slider & Grid Toggle -->
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <div style="display: flex; align-items: center; gap: 0.3rem;">
+                  <span style="font-size: 0.78rem; font-weight: 600; color: var(--text-secondary);">Tratto:</span>
+                  <input type="range" id="wbSizeSlider" min="1" max="20" value="3" style="width: 70px; accent-color: var(--accent-primary); cursor: pointer;">
+                </div>
+                <button id="wbToggleGrid" style="padding: 0.3rem 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: #eff6ff; color: var(--accent-primary); font-weight: 600; font-size: 0.78rem; cursor: pointer;">📐 Griglia ON</button>
               </div>
 
               <!-- Actions -->
-              <div style="display: flex; align-items: center; gap: 0.4rem;">
-                <button class="btn btn-outline" id="wbClearBtn" style="padding: 0.3rem 0.75rem; font-size: 0.8rem; min-height: 34px;">🗑️ Pulisci</button>
-                <button class="btn btn-primary" id="wbDownloadBtn" style="padding: 0.3rem 0.75rem; font-size: 0.8rem; min-height: 34px;">💾 Scarica (PNG)</button>
+              <div style="display: flex; align-items: center; gap: 0.35rem;">
+                <button class="btn btn-outline" id="wbClearBtn" style="padding: 0.25rem 0.65rem; font-size: 0.78rem; min-height: 32px;">🗑️ Pulisci</button>
+                <button class="btn btn-primary" id="wbDownloadBtn" style="padding: 0.25rem 0.65rem; font-size: 0.78rem; min-height: 32px;">💾 Scarica PNG</button>
               </div>
             </div>
 
             <!-- Canvas wrapper -->
-            <div style="position: relative; width: 100%; height: 320px; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border-color); overflow: hidden; touch-action: none;">
+            <div style="position: relative; width: 100%; height: 350px; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border-color); overflow: hidden; touch-action: none;">
               <canvas id="whiteboardCanvas" style="width: 100%; height: 100%; cursor: crosshair; display: block;"></canvas>
             </div>
           </div>

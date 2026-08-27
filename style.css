@@ -1705,39 +1705,9 @@ footer p {
     border-radius: 30px;
   }
 
-  /* Show floating badges on desktop */
+  /* Hide floating badges */
   .floating-badge {
-    display: flex;
-    position: absolute;
-    background: #ffffff;
-    padding: 0.75rem 1.2rem;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--border-color);
-    font-weight: 600;
-    font-size: 0.85rem;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    transition: var(--transition-normal);
-    animation: float 4s ease-in-out infinite;
-  }
-
-  .floating-badge:hover {
-    transform: scale(1.08) !important;
-    border-color: var(--accent-primary);
-  }
-
-  .badge-1 {
-    top: 10%;
-    left: -5%;
-    animation-delay: 0s;
-  }
-
-  .badge-2 {
-    bottom: 12%;
-    right: -5%;
-    animation-delay: 2s;
+    display: none !important;
   }
 
   /* Sections */

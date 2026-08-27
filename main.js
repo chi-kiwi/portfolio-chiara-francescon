@@ -24,6 +24,7 @@ function initApp() {
   safeExec(initRoiCalculator, 'initRoiCalculator');
   safeExec(initProjectConfigurator, 'initProjectConfigurator');
   safeExec(initFaqAccordion, 'initFaqAccordion');
+  safeExec(initWhiteboard, 'initWhiteboard');
   safeExec(initPlaygroundQuiz, 'initPlaygroundQuiz');
   safeExec(initContactForm, 'initContactForm');
   safeExec(initInteractiveBadges, 'initInteractiveBadges');
@@ -638,6 +639,158 @@ function initContactForm() {
         navigator.clipboard.writeText('chiarafrancescon003@gmail.com');
       } catch (e) {}
       showToast('Email chiarafrancescon003@gmail.com copiata negli appunti! 📋');
+    };
+  }
+}
+
+/* ==========================================================================
+   INTERACTIVE WHITEBOARD / SKETCHBOARD (CLICKFLOW INSPIRED)
+   ========================================================================== */
+function initWhiteboard() {
+  const canvas = document.getElementById('whiteboardCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let isDrawing = false;
+  let currentColor = '#2563eb';
+  let strokeWidth = 4;
+  let isEraser = false;
+
+  function resizeCanvas() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, rect.width, rect.height);
+  }
+
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return {
+      x: clientX - rect.left,
+      y: clientY - rect.top
+    };
+  }
+
+  function startDrawing(e) {
+    isDrawing = true;
+    const pos = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(pos.x, pos.y);
+  }
+
+  function draw(e) {
+    if (!isDrawing) return;
+    if (e.cancelable) e.preventDefault();
+    const pos = getPos(e);
+    ctx.strokeStyle = isEraser ? '#ffffff' : currentColor;
+    ctx.lineWidth = isEraser ? strokeWidth * 3 : strokeWidth;
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+  }
+
+  function stopDrawing() {
+    if (isDrawing) {
+      ctx.closePath();
+      isDrawing = false;
+    }
+  }
+
+  // Mouse listeners
+  canvas.addEventListener('mousedown', startDrawing);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', stopDrawing);
+  canvas.addEventListener('mouseleave', stopDrawing);
+
+  // Touch listeners for mobile & tablets
+  canvas.addEventListener('touchstart', (e) => {
+    startDrawing(e);
+  }, { passive: true });
+  canvas.addEventListener('touchmove', draw, { passive: false });
+  canvas.addEventListener('touchend', stopDrawing);
+
+  // Toolbar events
+  const colorBtns = document.querySelectorAll('.wb-color-btn');
+  colorBtns.forEach(btn => {
+    btn.onclick = () => {
+      isEraser = false;
+      currentColor = btn.getAttribute('data-color');
+      colorBtns.forEach(b => b.style.boxShadow = '0 0 0 1px #cbd5e1');
+      btn.style.boxShadow = `0 0 0 2px ${currentColor}`;
+      const pen = document.getElementById('wbToolPen');
+      const eraser = document.getElementById('wbToolEraser');
+      if (pen) {
+        pen.style.background = 'var(--accent-primary)';
+        pen.style.color = '#ffffff';
+      }
+      if (eraser) {
+        eraser.style.background = '#ffffff';
+        eraser.style.color = 'var(--text-primary)';
+      }
+    };
+  });
+
+  const toolPen = document.getElementById('wbToolPen');
+  const toolEraser = document.getElementById('wbToolEraser');
+
+  if (toolPen) {
+    toolPen.onclick = () => {
+      isEraser = false;
+      toolPen.style.background = 'var(--accent-primary)';
+      toolPen.style.color = '#ffffff';
+      if (toolEraser) {
+        toolEraser.style.background = '#ffffff';
+        toolEraser.style.color = 'var(--text-primary)';
+      }
+    };
+  }
+
+  if (toolEraser) {
+    toolEraser.onclick = () => {
+      isEraser = true;
+      toolEraser.style.background = 'var(--accent-primary)';
+      toolEraser.style.color = '#ffffff';
+      if (toolPen) {
+        toolPen.style.background = '#ffffff';
+        toolPen.style.color = 'var(--text-primary)';
+      }
+    };
+  }
+
+  const sizeSlider = document.getElementById('wbSizeSlider');
+  if (sizeSlider) {
+    sizeSlider.oninput = () => {
+      strokeWidth = parseInt(sizeSlider.value);
+    };
+  }
+
+  const clearBtn = document.getElementById('wbClearBtn');
+  if (clearBtn) {
+    clearBtn.onclick = () => {
+      const rect = canvas.getBoundingClientRect();
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, rect.width, rect.height);
+      showToast('Lavagna pulita 🧹');
+    };
+  }
+
+  const downloadBtn = document.getElementById('wbDownloadBtn');
+  if (downloadBtn) {
+    downloadBtn.onclick = () => {
+      const link = document.createElement('a');
+      link.download = 'schizzo-chiara-francescon.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      showToast('Disegno scaricato in PNG! 🎨');
     };
   }
 }

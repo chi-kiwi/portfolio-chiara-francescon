@@ -53,12 +53,7 @@
       </ul>
 
       <div style="display: flex; align-items: center; gap: 0.6rem;">
-        <!-- Sound Effect Toggle -->
-        <button class="sound-toggle-btn" id="soundToggle" title="Attiva/Disattiva Suoni Divertenti">
-          🔊 Audio ON
-        </button>
-
-        <a href="#contatti" class="btn btn-primary" id="headerCta">Parliamo! 🎉</a>
+        <a href="#contatti" class="btn btn-primary" id="headerCta">Richiedi Info 💬</a>
       </div>
       
       <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
@@ -82,15 +77,15 @@
         </p>
         
         <div class="hero-cta">
-          <button class="btn btn-primary" id="heroBtnFun">Lancia Confetti 🎉</button>
-          <a href="#progetti" class="btn btn-outline">Esplora i Progetti 🚀</a>
+          <a href="#progetti" class="btn btn-primary">Esplora i Progetti 🚀</a>
+          <a href="#contatti" class="btn btn-outline">Richiedi Informazioni 💬</a>
           <a href="/CV_Chiara_Francescon.pdf" download="CV_Chiara_Francescon.pdf" target="_blank" class="btn btn-outline" id="downloadCvBtn">Scarica CV (PDF) 📄</a>
         </div>
 
         <div class="hero-quick-stats">
           <div class="stat-item">
-            <span class="stat-number">3+</span>
-            <span class="stat-label">Progetti Digitali</span>
+            <span class="stat-number">4+</span>
+            <span class="stat-label">Progetti Digitali Live</span>
           </div>
           <div class="stat-item">
             <span class="stat-number">Base44</span>
@@ -103,19 +98,12 @@
         </div>
       </div>
 
-      <!-- Avatar & Badges with Logo -->
+      <!-- Avatar Logo -->
       <div class="hero-visual">
         <div class="avatar-container">
           <div class="avatar-inner">
-            <img src="/logo.jpg" alt="Logo CF Monogram" class="hero-logo-img">
+            <img src="/logo.jpg" alt="Logo Chiara Francescon" class="hero-logo-img">
           </div>
-        </div>
-
-        <div class="floating-badge badge-1" id="badge1">
-          ⚡ Base44 & Cloud Dev
-        </div>
-        <div class="floating-badge badge-2" id="badge2">
-          💡 Creator di MandaloVia
         </div>
       </div>
     </div>
@@ -274,7 +262,55 @@
           </div>
         </div>
 
-        <!-- Widget 3: Interactive Quiz Box -->
+        <!-- Widget 3: Interactive Whiteboard / Lavagna Interattiva -->
+        <div class="widget-card" style="margin-bottom: 3rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem;">
+            <span class="section-tag">Lavagna Touch & Sketch 🎨</span>
+            <span style="font-size: 0.78rem; font-weight: 600; color: var(--accent-teal); background: #f0fdf4; padding: 0.25rem 0.6rem; border-radius: var(--radius-full); border: 1px solid #bbf7d0;">💡 Ispirata alla tecnologia ClickFlow</span>
+          </div>
+          <h3 class="widget-title">Lavagna Interattiva di Prova</h3>
+          <p class="widget-subtitle">Disegna schemi, annota idee o fai uno schizzo al volo direttamente dal tuo schermo o smartphone!</p>
+
+          <div class="whiteboard-box" style="background: #f8fafc; border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
+            <!-- Toolbar -->
+            <div class="whiteboard-toolbar" style="display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; background: #ffffff; padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+              <!-- Colors -->
+              <div style="display: flex; align-items: center; gap: 0.4rem;" id="wbColorPicker">
+                <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);">Colore:</span>
+                <button class="wb-color-btn active" data-color="#2563eb" style="background: #2563eb; width: 26px; height: 26px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 2px #2563eb; cursor: pointer;" title="Blu"></button>
+                <button class="wb-color-btn" data-color="#0d9488" style="background: #0d9488; width: 26px; height: 26px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Teal"></button>
+                <button class="wb-color-btn" data-color="#8b5cf6" style="background: #8b5cf6; width: 26px; height: 26px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Viola"></button>
+                <button class="wb-color-btn" data-color="#ef4444" style="background: #ef4444; width: 26px; height: 26px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Rosso"></button>
+                <button class="wb-color-btn" data-color="#0f172a" style="background: #0f172a; width: 26px; height: 26px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Nero"></button>
+              </div>
+
+              <!-- Tools -->
+              <div style="display: flex; align-items: center; gap: 0.4rem;">
+                <button class="wb-tool-btn active" id="wbToolPen" style="padding: 0.35rem 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--accent-primary); color: white; font-weight: 600; font-size: 0.8rem; cursor: pointer;">🖊️ Penna</button>
+                <button class="wb-tool-btn" id="wbToolEraser" style="padding: 0.35rem 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: #ffffff; color: var(--text-primary); font-weight: 600; font-size: 0.8rem; cursor: pointer;">🧹 Gomma</button>
+              </div>
+
+              <!-- Size slider -->
+              <div style="display: flex; align-items: center; gap: 0.4rem;">
+                <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);">Tratto:</span>
+                <input type="range" id="wbSizeSlider" min="2" max="24" value="4" style="width: 80px; accent-color: var(--accent-primary); cursor: pointer;">
+              </div>
+
+              <!-- Actions -->
+              <div style="display: flex; align-items: center; gap: 0.4rem;">
+                <button class="btn btn-outline" id="wbClearBtn" style="padding: 0.3rem 0.75rem; font-size: 0.8rem; min-height: 34px;">🗑️ Pulisci</button>
+                <button class="btn btn-primary" id="wbDownloadBtn" style="padding: 0.3rem 0.75rem; font-size: 0.8rem; min-height: 34px;">💾 Scarica (PNG)</button>
+              </div>
+            </div>
+
+            <!-- Canvas wrapper -->
+            <div style="position: relative; width: 100%; height: 320px; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border-color); overflow: hidden; touch-action: none;">
+              <canvas id="whiteboardCanvas" style="width: 100%; height: 100%; cursor: crosshair; display: block;"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Widget 4: Interactive Quiz Box -->
         <div class="widget-card">
           <span class="section-tag">Mini Quiz 🧙‍♀️</span>
           <h3 class="widget-title">Che Tipo di Profilo Digitale Sei?</h3>

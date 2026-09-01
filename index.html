@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- SEO Meta Tags -->
-  <title>Chiara Francescon | Soluzioni Digitali, Base44 & Automazioni</title>
-  <meta name="description" content="Portfolio di Chiara Francescon - Sviluppo App Cloud Base44 & Antigravity 2, Ideatrice di MandaloVia, automazioni email marketing e gestione processi aziendali.">
-  <meta name="keywords" content="Chiara Francescon, Chiara Francescon portfolio, MandaloVia, Base44, Antigravity 2, Email Marketing, Automazioni Excel, Gestione Magazzino, D.Lgs. 81/08">
+  <title>Chiara Francescon | Web App, Gestionali & Automazioni Su Misura</title>
+  <meta name="description" content="Chiara Francescon - Trasformo processi aziendali gestiti con Excel, WhatsApp e carta in software semplici, personalizzati e realmente utilizzabili dal tuo team.">
+  <meta name="keywords" content="Chiara Francescon, software su misura, MandaloVia, Base44, gestionali cantiere, automazioni excel, web app cloud, digitalizzazione processi">
   <meta name="author" content="Chiara Francescon">
   
   <!-- Favicon Logo -->
   <link rel="icon" type="image/jpeg" href="/logo.jpg">
 
   <!-- Open Graph / Social Media -->
-  <meta property="og:title" content="Chiara Francescon | Soluzioni Digitali, Base44 & Automazioni">
-  <meta property="og:description" content="Sviluppo App Cloud Base44, Antigravity 2, Piattaforma MandaloVia e automazioni email marketing.">
+  <meta property="og:title" content="Chiara Francescon | Web App, Gestionali & Automazioni Su Misura">
+  <meta property="og:description" content="Trasformo i processi aziendali con Excel, WhatsApp e carta in software su misura per la tua attività. Primo confronto gratuito.">
   <meta property="og:image" content="/logo.jpg">
   <meta property="og:type" content="website">
 
@@ -27,9 +27,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Confetti Canvas Overlay -->
-  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
 
   <!-- Toast Notification -->
   <div class="toast-msg" id="toastMsg"></div>
@@ -43,58 +40,52 @@
       </a>
       
       <ul class="nav-links" id="navLinks">
-        <li><a href="#chi-sono" class="nav-link">Chi Sono</a></li>
+        <li><a href="#mandalovia-spotlight" class="nav-link">MandaloVia ⭐</a></li>
+        <li><a href="#potrei-aiutarti" class="nav-link">Come Posso Aiutarti</a></li>
         <li><a href="#progetti" class="nav-link">Progetti</a></li>
-        <li><a href="#skills" class="nav-link">Competenze</a></li>
-        <li><a href="#interactive" class="nav-link">Efficienza ⚡</a></li>
-        <li><a href="#faq" class="nav-link">FAQ</a></li>
+        <li><a href="#chi-sono" class="nav-link">Chi Sono</a></li>
         <li><a href="#prezzi" class="nav-link">Prezzi</a></li>
         <li><a href="#contatti" class="nav-link">Contatti</a></li>
       </ul>
 
       <div style="display: flex; align-items: center; gap: 0.6rem;">
-        <a href="#contatti" class="btn btn-primary" id="headerCta">Richiedi Info 💬</a>
+        <a href="#contatti" class="btn btn-primary" id="headerCta">Parliamo del tuo problema ➔</a>
       </div>
       
       <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">☰</button>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero Section — Problem-First Headline -->
   <header class="hero" id="hero">
     <div class="container hero-grid">
       <div class="hero-content">
         <div class="hero-badge">
-          ✨ Soluzioni Digitali & Automazioni Cloud
+          ✨ Soluzioni Digitali Su Misura Per la Tua Azienda
         </div>
         
         <h1 class="hero-title">
-          Ciao! Sono Chiara <span class="gradient-text">Francescon</span> <span class="wave-hand">👋</span>
+          Hai ancora processi aziendali gestiti con <span class="gradient-text">Excel, WhatsApp e carta?</span>
         </h1>
         
-        <p class="hero-description">
-          Specializzata nello <strong>sviluppo di applicazioni cloud con Base44 ed Antigravity 2</strong>, automazioni di processi e campagne di <strong>email marketing massivo (fino a 800 mail personalizzate)</strong>. Ideatrice della piattaforma cloud <strong>MandaloVia</strong> per la gestione documentazione e conformità D.Lgs. 81/08.
+        <p class="hero-description" style="font-size: 1.15rem; font-weight: 500; color: var(--text-primary); margin-bottom: 1rem;">
+          Li trasformo in software semplici, personalizzati e realmente utilizzabili dal tuo team.
         </p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.8rem;">
+          <span class="tech-tag" style="padding: 0.35rem 0.8rem; font-size: 0.82rem; font-weight: 600;">Web App</span>
+          <span class="tech-tag" style="padding: 0.35rem 0.8rem; font-size: 0.82rem; font-weight: 600;">Gestionali</span>
+          <span class="tech-tag" style="padding: 0.35rem 0.8rem; font-size: 0.82rem; font-weight: 600;">Automazioni</span>
+          <span class="tech-tag" style="padding: 0.35rem 0.8rem; font-size: 0.82rem; font-weight: 600;">Strumenti Interni</span>
+        </div>
         
         <div class="hero-cta">
-          <a href="#progetti" class="btn btn-primary">Esplora i Progetti 🚀</a>
-          <a href="#contatti" class="btn btn-outline">Richiedi Informazioni 💬</a>
+          <a href="#contatti" class="btn btn-primary" style="font-size: 1rem; padding: 0.85rem 1.6rem;">Parliamo del tuo problema ➔</a>
           <a href="/CV_Chiara_Francescon.pdf" download="CV_Chiara_Francescon.pdf" target="_blank" class="btn btn-outline" id="downloadCvBtn">Scarica CV (PDF) 📄</a>
         </div>
 
-        <div class="hero-quick-stats">
-          <div class="stat-item">
-            <span class="stat-number">4+</span>
-            <span class="stat-label">Progetti Digitali Live</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">Base44</span>
-            <span class="stat-label">Sviluppo App Cloud</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">Antigravity 2</span>
-            <span class="stat-label">Soluzioni Avanzate</span>
-          </div>
+        <div style="margin-top: 1.5rem; padding: 1rem 1.2rem; background: var(--bg-secondary); border-left: 4px solid var(--accent-primary); border-radius: var(--radius-sm); font-size: 0.92rem; color: var(--text-secondary);">
+          <strong>💡 La mia filosofia:</strong> Non vendo software "standard". Analizzo come lavori oggi e costruisco lo strumento che ti serve davvero.
         </div>
       </div>
 
@@ -102,7 +93,7 @@
       <div class="hero-visual">
         <div class="avatar-container">
           <div class="avatar-inner">
-            <img src="/logo.jpg" alt="Logo Chiara Francescon" class="hero-logo-img">
+            <img src="/logo.jpg" alt="Chiara Francescon" class="hero-logo-img">
           </div>
         </div>
       </div>
@@ -110,39 +101,161 @@
   </header>
 
   <main>
-    <!-- Chi Sono Section -->
+    <!-- MANDALOVIA GIANT SPOTLIGHT SECTION -->
+    <section class="reveal" id="mandalovia-spotlight" style="padding: 4rem 0; background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        <div style="text-align: center; max-width: 780px; margin: 0 auto 2.5rem auto;">
+          <span class="section-tag" style="font-size: 0.85rem; letter-spacing: 0.1em;">Caso di Studio Reale ⭐</span>
+          <h2 style="font-size: 2.2rem; font-weight: 800; margin-top: 0.4rem; margin-bottom: 0.8rem;">
+            HO COSTRUITO QUESTO PER UN PROBLEMA REALE
+          </h2>
+          <h3 class="gradient-text" style="font-size: 1.6rem; font-weight: 700;">MandaloVia — Piattaforma Gestione & Invio Documenti Cantiere</h3>
+          <p style="color: var(--text-secondary); font-size: 1.05rem; margin-top: 0.6rem;">
+            Una piattaforma per semplificare la gestione e l'invio della documentazione di cantiere e tesserini in piena conformità (D.Lgs. 81/08).
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem; margin-bottom: 2.5rem;">
+          <!-- Il Problema -->
+          <div style="background: #fff5f5; border: 1px solid #fed7d7; padding: 1.8rem; border-radius: var(--radius-lg);">
+            <div style="font-size: 2rem; margin-bottom: 0.6rem;">🛑</div>
+            <h4 style="font-size: 1.2rem; color: #9b2c2c; margin-bottom: 0.6rem;">Il Problema</h4>
+            <p style="color: #742a2a; font-size: 0.95rem; line-height: 1.6;">
+              Documenti pesanti inviati per mail, file dispersi in chat WhatsApp, difficoltà nel sapere chi ha scaricato cosa ed il rischio costante di sanzioni per documentazione di cantiere scaduta o incompleta.
+            </p>
+          </div>
+
+          <!-- La Soluzione -->
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; padding: 1.8rem; border-radius: var(--radius-lg);">
+            <div style="font-size: 2rem; margin-bottom: 0.6rem;">✅</div>
+            <h4 style="font-size: 1.2rem; color: #166534; margin-bottom: 0.6rem;">La Soluzione</h4>
+            <p style="color: #14532d; font-size: 0.95rem; line-height: 1.6;">
+              Una piattaforma web cloud che centralizza i documenti aziendali e permette di condividerli all'esterno tramite <strong>link sicuri, protetti e temporizzati</strong> con tracciamento automatico.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cosa permette di fare -->
+        <div style="background: #ffffff; border: 1px solid var(--border-color); padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 2.5rem;">
+          <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.2rem; color: var(--text-primary);">⚡ Cosa permette di fare in azienda:</h4>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem;">
+            <div style="display: flex; gap: 0.6rem; align-items: flex-start;">
+              <span style="color: var(--accent-teal); font-weight: 800; font-size: 1.1rem;">✓</span>
+              <span style="font-size: 0.92rem; color: var(--text-secondary);">Gestione centralizzata documenti e tesserini dipendenti</span>
+            </div>
+            <div style="display: flex; gap: 0.6rem; align-items: flex-start;">
+              <span style="color: var(--accent-teal); font-weight: 800; font-size: 1.1rem;">✓</span>
+              <span style="font-size: 0.92rem; color: var(--text-secondary);">Link di download temporizzati e protetti per partner e clienti</span>
+            </div>
+            <div style="display: flex; gap: 0.6rem; align-items: flex-start;">
+              <span style="color: var(--accent-teal); font-weight: 800; font-size: 1.1rem;">✓</span>
+              <span style="font-size: 0.92rem; color: var(--text-secondary);">Monitoraggio e storico dei download effettuati in tempo reale</span>
+            </div>
+            <div style="display: flex; gap: 0.6rem; align-items: flex-start;">
+              <span style="color: var(--accent-teal); font-weight: 800; font-size: 1.1rem;">✓</span>
+              <span style="font-size: 0.92rem; color: var(--text-secondary);">Preset documentali personalizzati per dipendente e cantiere</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <a href="https://mandalovia.vercel.app/" target="_blank" class="btn btn-primary" style="font-size: 1.05rem; padding: 0.85rem 2rem;">
+            PROVA LA DEMO LIVE (MandaloVia) 🚀
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW COMMERCIAL SECTION: "Potrei aiutarti se..." -->
+    <section class="reveal" id="potrei-aiutarti" style="padding: 4.5rem 0;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Esigenze & Soluzioni 💡</span>
+          <h2 class="section-title">Potrei Aiutarti Se...</h2>
+          <p class="section-subtitle">
+            Se ti riconisci in una di queste situazioni, possiamo costruire la soluzione giusta per il tuo lavoro.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+          <!-- Case 1 -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.6rem; box-shadow: var(--shadow-sm); transition: var(--transition-normal);">
+            <div style="font-size: 1.6rem; margin-bottom: 0.6rem;">📊</div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem;">Hai un Excel diventato ingestibile</h4>
+            <p style="font-size: 0.92rem; color: var(--accent-primary); font-weight: 600;">➔ Posso trasformarlo in un'app cloud semplice e ordinata.</p>
+          </div>
+
+          <!-- Case 2 -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.6rem; box-shadow: var(--shadow-sm); transition: var(--transition-normal);">
+            <div style="font-size: 1.6rem; margin-bottom: 0.6rem;">💬</div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem;">Il tuo team usa WhatsApp per gestire il lavoro</h4>
+            <p style="font-size: 0.92rem; color: var(--accent-primary); font-weight: 600;">➔ Possiamo centralizzare le informazioni ed azzerare gli errori.</p>
+          </div>
+
+          <!-- Case 3 -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.6rem; box-shadow: var(--shadow-sm); transition: var(--transition-normal);">
+            <div style="font-size: 1.6rem; margin-bottom: 0.6rem;">⚙️</div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem;">Fai ogni settimana le stesse operazioni manualmente</h4>
+            <p style="font-size: 0.92rem; color: var(--accent-primary); font-weight: 600;">➔ Possiamo automatizzarle con invii automatici e script dedicati.</p>
+          </div>
+
+          <!-- Case 4 -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.6rem; box-shadow: var(--shadow-sm); transition: var(--transition-normal);">
+            <div style="font-size: 1.6rem; margin-bottom: 0.6rem;">🏬</div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem;">Hai bisogno di un gestionale ma quelli esistenti non si adattano</h4>
+            <p style="font-size: 0.92rem; color: var(--accent-primary); font-weight: 600;">➔ Posso costruirne uno su misura per come lavori tu.</p>
+          </div>
+
+          <!-- Case 5 -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.6rem; box-shadow: var(--shadow-sm); transition: var(--transition-normal);">
+            <div style="font-size: 1.6rem; margin-bottom: 0.6rem;">💡</div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem;">Hai un'idea per un'app ma non sai da dove partire</h4>
+            <p style="font-size: 0.92rem; color: var(--accent-primary); font-weight: 600;">➔ Possiamo trasformarla in un prototipo e web app funzionante.</p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2.5rem;">
+          <a href="#contatti" class="btn btn-primary" style="font-size: 1rem; padding: 0.8rem 1.8rem;">
+            Parliamo della tua esigenza ➔
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chi Sono / Profilo Professionale -->
     <section class="about reveal" id="chi-sono">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Profilo Professionale</span>
-          <h2 class="section-title">Esperienza & Competenze 💡</h2>
+          <span class="section-tag">Chi Sono</span>
+          <h2 class="section-title">Esperienza & Competenze Tecniche 💡</h2>
           <p class="section-subtitle">
-            Sviluppo di applicazioni cloud con Base44 e Antigravity 2, gestione della documentazione di cantiere e automazioni avanzate.
+            Esperienza in ufficio tecnico, AutoCAD, sviluppo software con Base44 e Antigravity 2.
           </p>
         </div>
 
         <div class="about-grid">
           <div class="about-card">
             <div class="card-icon">⚡</div>
-            <h3>Sviluppo App Cloud (Base44 & Antigravity 2)</h3>
+            <h3>Sviluppo App Cloud & Base44</h3>
             <p>
-              Creazione di piattaforme web gestionali avanzate per l'invio documenti, gestione magazzino, fiere ed eventi.
+              Creazione di piattaforme web gestionali per invio documenti, gestione cantieri, magazzino e flotta mezzi.
             </p>
           </div>
 
           <div class="about-card">
-            <div class="card-icon">☁️</div>
-            <h3>Piattaforme Cloud & MandaloVia</h3>
+            <div class="card-icon">📐</div>
+            <h3>Ufficio Tecnico & AutoCAD</h3>
             <p>
-              Ideazione e gestione di <strong>MandaloVia</strong>, piattaforma web per l'invio protetto e automatizzato della documentazione di cantiere e conformità.
+              Disegno tecnico, gestione documentale per cantieri e conformità D.Lgs. 81/08.
             </p>
           </div>
 
           <div class="about-card">
             <div class="card-icon">📧</div>
-            <h3>Automazioni Email Marketing (800+ Mail)</h3>
+            <h3>Automazioni Excel & Marketing</h3>
             <p>
-              Sviluppo di modelli Excel/VBA per l'invio massivo e personalizzato di oltre 800 email per campagne in Italia e in Francia con brochure allegata.
+              Modelli Excel/VBA per invio massivo di oltre 800 email personalizzate con allegati e report per certificazioni ISO.
             </p>
           </div>
         </div>
@@ -167,10 +280,10 @@
     <section class="projects reveal" id="progetti">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Portfolio</span>
-          <h2 class="section-title">Progetti Realizzati 🚀</h2>
+          <span class="section-tag">Portfolio Progetti</span>
+          <h2 class="section-title">Software & Piattaforme Realizzate 🚀</h2>
           <p class="section-subtitle">
-            Selezione delle soluzioni software, piattaforme cloud e automazioni gestionali.
+            Esempi concreti di software gestionali e soluzioni digitali su misura.
           </p>
         </div>
 
@@ -188,14 +301,14 @@
       </div>
     </section>
 
-    <!-- Interactive Section / Fun Playground & ROI Calculator -->
+    <!-- Efficienza & Decision Tools (ROI Calculator & Configurator) -->
     <section class="interactive-section reveal" id="interactive">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Efficienza & Stima ⚡</span>
-          <h2 class="section-title">Calcola il Risparmio di Tempo!</h2>
+          <span class="section-tag">Calcolatore & Stima ⚡</span>
+          <h2 class="section-title">Calcola il Risparmio di Tempo nella Tua Azienda</h2>
           <p class="section-subtitle">
-            Scopri quante ore e costi puoi risparmiare e configura l'esigenza della tua azienda!
+            Scopri quante ore e costi puoi risparmiare e configura lo strumento per la tua azienda.
           </p>
         </div>
 
@@ -203,7 +316,7 @@
         <div class="widget-card" style="margin-bottom: 3rem;">
           <span class="section-tag">Calcolatore di Efficienza ⏱️</span>
           <h3 class="widget-title">Quanto tempo perdi in compiti manuali?</h3>
-          <p class="widget-subtitle">Sposta lo slider per scoprire quante ore e costi puoi risparmiare con le automazioni ed i gestionali di Chiara!</p>
+          <p class="widget-subtitle">Sposta lo slider per scoprire quante ore e costi puoi risparmiare con un software su misura!</p>
 
           <div class="roi-calculator-box">
             <div class="roi-slider-container">
@@ -231,10 +344,10 @@
         </div>
 
         <!-- Widget 2: Interactive Configurator for Rapid Estimate -->
-        <div class="widget-card" style="margin-bottom: 3rem;">
+        <div class="widget-card">
           <span class="section-tag">Configuratore di Progetto 💡</span>
           <h3 class="widget-title">Di quale soluzione ha bisogno la tua attività?</h3>
-          <p class="widget-subtitle">Seleziona le tue preferenze per generare un messaggio pre-compilato su misura!</p>
+          <p class="widget-subtitle">Seleziona le tue preferenze per generare una richiesta su misura!</p>
 
           <div class="configurator-box">
             <div class="config-step">
@@ -257,108 +370,10 @@
             </div>
 
             <div class="config-output-box" style="margin-top: 1.8rem; text-align: center;">
-              <button class="btn btn-primary" id="applyConfigBtn">Invia Richiesta Personalizzata 🎉</button>
+              <button class="btn btn-primary" id="applyConfigBtn">Invia Richiesta Personalizzata ➔</button>
             </div>
           </div>
         </div>
-
-        <!-- Widget 3: Interactive AutoCAD Style CAD Sketchboard Pro -->
-        <div class="widget-card" style="margin-bottom: 3rem;">
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.4rem;">
-            <span class="section-tag">Lavagna Tecnica & AutoCAD Pro Engine 📐</span>
-            <span style="font-size: 0.78rem; font-weight: 600; color: var(--accent-primary); background: var(--accent-light); padding: 0.25rem 0.6rem; border-radius: var(--radius-full); border: 1px solid rgba(37,99,235,0.2);">📐 Precisione CAD 90° & Vector Preview</span>
-          </div>
-          <h3 class="widget-title">Lavagna Tecnica & Disegno CAD Pro</h3>
-          <p class="widget-subtitle">Disegna linee dritte di precisione, attiva la modalità **Orto 90°**, traccia forme geometriche, inserisci annotazioni di testo e scarica il progetto!</p>
-
-          <div class="whiteboard-box" style="background: #f8fafc; border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-md);">
-            <!-- Toolbar -->
-            <div class="whiteboard-toolbar" style="display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; background: #ffffff; padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
-              <!-- Colors Palette & Custom Picker -->
-              <div style="display: flex; align-items: center; gap: 0.3rem; flex-wrap: wrap;" id="wbColorPicker">
-                <span style="font-size: 0.78rem; font-weight: 600; color: var(--text-secondary);">Colori:</span>
-                <button class="wb-color-btn active" data-color="#2563eb" style="background: #2563eb; width: 22px; height: 22px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 2px #2563eb; cursor: pointer;" title="Blu"></button>
-                <button class="wb-color-btn" data-color="#0d9488" style="background: #0d9488; width: 22px; height: 22px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Teal"></button>
-                <button class="wb-color-btn" data-color="#16a34a" style="background: #16a34a; width: 22px; height: 22px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Verde"></button>
-                <button class="wb-color-btn" data-color="#ea580c" style="background: #ea580c; width: 22px; height: 22px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Arancione"></button>
-                <button class="wb-color-btn" data-color="#ef4444" style="background: #ef4444; width: 22px; height: 22px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Rosso"></button>
-                <button class="wb-color-btn" data-color="#8b5cf6" style="background: #8b5cf6; width: 22px; height: 22px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Viola"></button>
-                <button class="wb-color-btn" data-color="#0f172a" style="background: #0f172a; width: 22px; height: 22px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 1px #cbd5e1; cursor: pointer;" title="Nero"></button>
-                <input type="color" id="wbCustomColorPicker" value="#2563eb" style="width: 26px; height: 26px; border: none; border-radius: 50%; cursor: pointer; padding: 0; background: none;" title="Scegli qualsiasi colore personalizzato 🎨">
-              </div>
-
-              <!-- Tools: Pen, Line, Orto 90°, Rect, Circle, Text, Eraser -->
-              <div style="display: flex; align-items: center; gap: 0.3rem; flex-wrap: wrap;" id="wbToolsGroup">
-                <button class="wb-tool-btn active" id="wbToolPen" style="padding: 0.28rem 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: var(--accent-primary); color: white; font-weight: 600; font-size: 0.75rem; cursor: pointer;">🖊️ Penna</button>
-                <button class="wb-tool-btn" id="wbToolLine" style="padding: 0.28rem 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: #ffffff; color: var(--text-primary); font-weight: 600; font-size: 0.75rem; cursor: pointer;">📏 Linea</button>
-                <button class="wb-tool-btn" id="wbToolOrtho" style="padding: 0.28rem 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: #ffffff; color: var(--text-primary); font-weight: 600; font-size: 0.75rem; cursor: pointer;" title="Disegna linee a 90° (Orizzontali / Verticali)">📌 Orto 90°</button>
-                <button class="wb-tool-btn" id="wbToolRect" style="padding: 0.28rem 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: #ffffff; color: var(--text-primary); font-weight: 600; font-size: 0.75rem; cursor: pointer;">🔲 Rettangolo</button>
-                <button class="wb-tool-btn" id="wbToolCircle" style="padding: 0.28rem 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: #ffffff; color: var(--text-primary); font-weight: 600; font-size: 0.75rem; cursor: pointer;">⭕ Cerchio</button>
-                <button class="wb-tool-btn" id="wbToolText" style="padding: 0.28rem 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: #ffffff; color: var(--text-primary); font-weight: 600; font-size: 0.75rem; cursor: pointer;">🔤 Testo</button>
-                <button class="wb-tool-btn" id="wbToolEraser" style="padding: 0.28rem 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: #ffffff; color: var(--text-primary); font-weight: 600; font-size: 0.75rem; cursor: pointer;">🧹 Gomma</button>
-              </div>
-
-              <!-- Size slider & Grid Switcher -->
-              <div style="display: flex; align-items: center; gap: 0.5rem;">
-                <div style="display: flex; align-items: center; gap: 0.3rem;">
-                  <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-secondary);">Tratto:</span>
-                  <input type="range" id="wbSizeSlider" min="1" max="20" value="3" style="width: 60px; accent-color: var(--accent-primary); cursor: pointer;">
-                </div>
-                <button id="wbToggleGrid" style="padding: 0.28rem 0.55rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background: #eff6ff; color: var(--accent-primary); font-weight: 600; font-size: 0.75rem; cursor: pointer;">📐 Griglia ON</button>
-              </div>
-
-              <!-- Actions: Undo, Clear, Download -->
-              <div style="display: flex; align-items: center; gap: 0.3rem;">
-                <button class="btn btn-outline" id="wbUndoBtn" style="padding: 0.25rem 0.55rem; font-size: 0.75rem; min-height: 30px;" title="Annulla ultima azione">↩️ Annulla</button>
-                <button class="btn btn-outline" id="wbClearBtn" style="padding: 0.25rem 0.55rem; font-size: 0.75rem; min-height: 30px;">🗑️ Pulisci</button>
-                <button class="btn btn-primary" id="wbDownloadBtn" style="padding: 0.25rem 0.65rem; font-size: 0.75rem; min-height: 30px;">💾 Scarica PNG</button>
-              </div>
-            </div>
-
-            <!-- Canvas wrapper -->
-            <div style="position: relative; width: 100%; height: 380px; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border-color); overflow: hidden; touch-action: none;">
-              <canvas id="whiteboardCanvas" style="width: 100%; height: 100%; cursor: crosshair; display: block;"></canvas>
-              
-              <!-- CAD Status Bar -->
-              <div style="position: absolute; bottom: 8px; left: 12px; right: 12px; display: flex; justify-content: space-between; align-items: center; pointer-events: none; font-size: 0.75rem; color: var(--text-secondary); background: rgba(255,255,255,0.85); backdrop-filter: blur(4px); padding: 0.2rem 0.6rem; border-radius: 6px; border: 1px solid rgba(226,232,240,0.8);">
-                <span id="wbCadCoords">Coordinate X: 0 | Y: 0</span>
-                <span id="wbCadMode">Strumento: 🖊️ Penna Libera</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Widget 4: Interactive Quiz Box -->
-        <div class="widget-card">
-          <span class="section-tag">Mini Quiz 🧙‍♀️</span>
-          <h3 class="widget-title">Che Tipo di Profilo Digitale Sei?</h3>
-          <p class="widget-subtitle">Rispondi a 2 domande veloci per scoprire la tua personalità lavorativa!</p>
-
-          <div id="quizContainer" class="quiz-box">
-            <div class="quiz-step active" id="quizStep1">
-              <h4 style="margin-bottom: 1rem; font-size: 1.15rem;">1. Come gestisci i compiti ripetitivi e l'invio mail?</h4>
-              <div class="quiz-options">
-                <button class="quiz-opt" data-score="1">A) Automatizzo tutto per inviare fino a 800 mail personalizzate in 2 click ⚡</button>
-                <button class="quiz-opt" data-score="2">B) Creo un foglio Excel super ordinato da 500 righe 📊</button>
-                <button class="quiz-opt" data-score="3">C) Chiamo Chiara Francescon prima che impazzisca! 📞</button>
-              </div>
-            </div>
-
-            <div class="quiz-step" id="quizStep2" style="display:none;">
-              <h4 style="margin-bottom: 1rem; font-size: 1.15rem;">2. Come invii i documenti di cantiere e tesserini?</h4>
-              <div class="quiz-options">
-                <button class="quiz-opt" data-score="1">A) Invio un link sicuro e temporizzato con MandaloVia ☁️</button>
-                <button class="quiz-opt" data-score="2">B) Allego 20 PDF pesanti bloccando la posta mail 📧</button>
-                <button class="quiz-opt" data-score="3">C) Stampo tutto su carta e porto a mano in cantiere 🚶‍♀️</button>
-              </div>
-            </div>
-
-            <div class="quiz-result" id="quizResult" style="display:none;">
-              <!-- Dynamic Result -->
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
@@ -369,7 +384,7 @@
           <span class="section-tag">Domande Frequenti</span>
           <h2 class="section-title">FAQ & Risposte Utili 🤔</h2>
           <p class="section-subtitle">
-            Tutto quello che vuoi sapere sull'invio sicuro dei documenti, le automazioni e i tempi di sviluppo.
+            Tutto quello che vuoi sapere sulle soluzioni su misura, i tempi e l'invio sicuro dei documenti.
           </p>
         </div>
 
@@ -510,7 +525,7 @@
           <p class="pricing-disclaimer">Il prezzo finale viene definito in base alle funzionalità e alla complessità del progetto.</p>
           <p class="pricing-free">Il primo confronto è gratuito.</p>
           <div class="pricing-actions">
-            <a href="#contatti" class="btn btn-primary">Richiedi un Preventivo</a>
+            <a href="#contatti" class="btn btn-primary">Parliamo del tuo progetto ➔</a>
             <a href="/listino-prezzi.html" target="_blank" class="btn btn-outline" id="downloadPriceList">
               Listino Completo (PDF) 📄
             </a>
@@ -519,14 +534,14 @@
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section (Conversational & High Trust) -->
     <section class="contact reveal" id="contatti">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Contatti</span>
-          <h2 class="section-title">Scrivimi un Messaggio 💬</h2>
+          <span class="section-tag">Contatto Diretto</span>
+          <h2 class="section-title">Raccontami cosa vuoi automatizzare 💬</h2>
           <p class="section-subtitle">
-            Puoi scrivermi direttamente via mail o compilare il modulo sottostante per collaborazioni o progetti.
+            Hai un problema in azienda? Vediamo se possiamo trasformarlo in software su misura.
           </p>
         </div>
 
@@ -554,13 +569,17 @@
             <button class="btn btn-outline" id="copyEmailBtn" style="width: 100%; margin-top: 1.2rem;">
               Copia Email negli Appunti 📋
             </button>
+
+            <div style="margin-top: 1.5rem; padding: 0.8rem; background: #ffffff; border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: center; font-size: 0.85rem; color: var(--accent-teal); font-weight: 600;">
+              ✓ Primo confronto gratuito · Nessun impegno
+            </div>
           </div>
 
           <!-- Contact Form -->
           <form class="contact-form" id="contactForm">
             <div class="form-group">
-              <label class="form-label" for="name">Nome e Cognome</label>
-              <input type="text" id="name" class="form-input" placeholder="Es. Mario Rossi" required>
+              <label class="form-label" for="name">Nome e Azienda</label>
+              <input type="text" id="name" class="form-input" placeholder="Es. Mario Rossi - EdilSpazio Srl" required>
             </div>
 
             <div class="form-group">
@@ -569,12 +588,12 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="message">Messaggio / Richiesta</label>
-              <textarea id="message" class="form-textarea" placeholder="Descrivi brevemente il progetto o la richiesta..." required></textarea>
+              <label class="form-label" for="message">Descrivi il problema o cosa vorresti automatizzare</label>
+              <textarea id="message" class="form-textarea" placeholder="Es. Gestiamo i cantieri con 5 fogli Excel e vorremmo un'app semplice..." required></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%;">
-              Invia Messaggio 🎉
+            <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem; padding: 0.85rem;">
+              Parliamo del tuo problema ➔
             </button>
           </form>
         </div>
@@ -595,8 +614,8 @@
   <!-- Footer -->
   <footer>
     <div class="container" style="display: flex; align-items: center; justify-content: center; gap: 0.8rem;">
-      <img src="/logo.jpg" alt="Logo Monogram" style="width: 24px; height: 24px; border-radius: 4px; object-fit: cover;">
-      <p>© 2026 Chiara Francescon — Soluzioni Digitali, Base44 & Automazioni. Tutti i diritti riservati.</p>
+      <img src="/logo.jpg" alt="Logo Chiara Francescon" style="width: 24px; height: 24px; border-radius: 4px; object-fit: cover;">
+      <p>© 2026 Chiara Francescon — Soluzioni Digitali, Base44 & Automazioni Su Misura. Tutti i diritti riservati.</p>
     </div>
   </footer>
 

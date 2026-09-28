@@ -24,7 +24,7 @@ export const projectsData = [
     soluzione: "Creazione di tesserini personali stampabili e digitali con QR Code dinamico univoco collegato in sicurezza alla cartella cloud protetta di ciascun operatore.",
     risultato: "Verifica e controllo istantaneo sul posto in meno di 2 secondi da smartphone senza dover cercare o stampare plichi di carta.",
     tags: ["QR Code Dinamico", "Sicurezza Cantiere", "D.Lgs. 81/08", "Digitalizzazione", "Accesso Smartphone"],
-    image: "mandalovia",
+    image: "tesserini-qr",
     badge: "📱 Digitalizzazione Cantiere",
     liveUrl: "#",
     githubUrl: "#"

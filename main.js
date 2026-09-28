@@ -473,43 +473,57 @@ function renderProjects(projects) {
 
     return `
       <div class="project-case-card" data-category="${proj.category}">
-        ${hasImage ? `
-          <div style="height: 180px; overflow: hidden; position: relative;">
-            <img src="${imageSrc}" alt="${proj.title}" style="width: 100%; height: 100%; object-fit: cover;">
-            <span style="position: absolute; top: 12px; right: 12px; background: rgba(15,23,42,0.85); color: #ffffff; padding: 0.25rem 0.65rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">${proj.badge}</span>
-          </div>
-        ` : `
-          <div style="padding: 1.2rem 1.5rem; background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-primary); text-transform: uppercase;">${proj.categoryLabel}</span>
-            <span style="background: var(--accent-light); color: var(--accent-primary); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600;">${proj.badge}</span>
-          </div>
-        `}
+        <div class="case-card-header">
+          ${hasImage ? `
+            <div class="case-img-container">
+              <div class="browser-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="browser-url">${proj.liveUrl !== '#' ? proj.liveUrl : 'app.chiarafrancescon.it'}</span>
+              </div>
+              <img src="${imageSrc}" alt="${proj.title}" class="case-preview-img">
+              <span class="case-badge-floating">${proj.badge}</span>
+            </div>
+          ` : `
+            <div class="case-fallback-container" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; min-height: 190px; padding: 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+              <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(38,189,248,0.3); padding: 0.8rem 1.4rem; border-radius: 12px; display: flex; align-items: center; gap: 0.8rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+                <span style="font-size: 2.2rem;">📱</span>
+                <div style="text-align: left;">
+                  <span style="font-size: 0.72rem; color: #38bdf8; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; display: block;">BADGE AZIENDALE DIGITALE</span>
+                  <span style="font-size: 0.95rem; font-weight: 700; color: #ffffff;">QR Code Accesso Cantiere</span>
+                </div>
+              </div>
+              <span class="case-badge-floating">${proj.badge}</span>
+            </div>
+          `}
+        </div>
 
         <div class="project-case-body">
-          <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-primary); line-height: 1.3;">${proj.title}</h3>
+          <h3 class="case-title">${proj.title}</h3>
 
           <div class="case-block problem">
             <span class="case-label">🛑 IL PROBLEMA</span>
-            ${proj.problema || proj.shortDesc}
+            <p>${proj.problema || proj.shortDesc}</p>
           </div>
 
           <div class="case-block solution">
             <span class="case-label">💡 LA SOLUZIONE</span>
-            ${proj.soluzione || proj.fullDesc}
+            <p>${proj.soluzione || proj.fullDesc}</p>
           </div>
 
           <div class="case-block result">
             <span class="case-label">🚀 IL RISULTATO</span>
-            ${proj.risultato || 'Ottimizzazione del processo aziendale e risparmio immediato di tempo.'}
+            <p>${proj.risultato || 'Ottimizzazione del processo aziendale e risparmio immediato di tempo.'}</p>
           </div>
 
-          <div class="project-tags" style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem;">
-            ${proj.tags.map(t => `<span class="tech-tag" style="font-size: 0.75rem; padding: 0.25rem 0.55rem;">${t}</span>`).join('')}
+          <div class="project-tags">
+            ${proj.tags.map(t => `<span class="tech-tag">${t}</span>`).join('')}
           </div>
 
           ${hasLiveUrl ? `
-            <div style="margin-top: auto; pt: 0.6rem;">
-              <a href="${proj.liveUrl}" target="_blank" class="btn btn-primary" style="width: 100%; font-size: 0.88rem; padding: 0.6rem; text-align: center;">
+            <div class="case-action">
+              <a href="${proj.liveUrl}" target="_blank" class="btn btn-primary case-btn">
                 Prova la Demo / Guarda Progetto ➔
               </a>
             </div>

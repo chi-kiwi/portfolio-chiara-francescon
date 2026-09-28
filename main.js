@@ -453,6 +453,9 @@ function renderSkills() {
 /* ==========================================================================
    PROJECTS RENDER
    ========================================================================== */
+/* ==========================================================================
+   PROJECTS RENDER (B2B CASE STUDY FORMAT)
+   ========================================================================== */
 function renderProjects(projects) {
   const grid = document.getElementById('projectsGrid');
   if (!grid || !projects) return;
@@ -460,64 +463,61 @@ function renderProjects(projects) {
   grid.innerHTML = projects.map(proj => {
     const imageMap = {
       teambuilder: '/teambuilder.png',
-      clickflow: '/clickflow.png',
       mandalovia: '/mandalovia.png',
       magazzino: '/magazzino.png',
-      'excel-mail': '/email-marketing.png',
-      eventi: '/eventi.png'
+      'excel-mail': '/email-marketing.png'
     };
     const hasImage = Boolean(imageMap[proj.image]);
     const imageSrc = imageMap[proj.image] || '';
     const hasLiveUrl = proj.liveUrl && proj.liveUrl !== '#';
 
     return `
-      <div class="project-card" data-category="${proj.category}">
-        <div class="project-thumbnail">
-          ${hasImage ? `
-            <img src="${imageSrc}" alt="${proj.title}" class="project-img">
-          ` : `
-            <div class="project-graphic-fallback">
-              <span class="graphic-icon">
-                ${proj.id === 'gestore-appuntamenti-whatsapp' ? '💬' : proj.id === 'excel-email-marketing' ? '📧' : proj.category === 'automations' ? '⚙️' : '⚡'}
-              </span>
-              <span class="graphic-label">${proj.categoryLabel}</span>
-            </div>
-          `}
-          <span class="project-badge-top">${proj.badge}</span>
-        </div>
+      <div class="project-case-card" data-category="${proj.category}">
+        ${hasImage ? `
+          <div style="height: 180px; overflow: hidden; position: relative;">
+            <img src="${imageSrc}" alt="${proj.title}" style="width: 100%; height: 100%; object-fit: cover;">
+            <span style="position: absolute; top: 12px; right: 12px; background: rgba(15,23,42,0.85); color: #ffffff; padding: 0.25rem 0.65rem; border-radius: 20px; font-size: 0.75rem; font-weight: 600;">${proj.badge}</span>
+          </div>
+        ` : `
+          <div style="padding: 1.2rem 1.5rem; background: var(--bg-secondary); border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-primary); text-transform: uppercase;">${proj.categoryLabel}</span>
+            <span style="background: var(--accent-light); color: var(--accent-primary); padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600;">${proj.badge}</span>
+          </div>
+        `}
 
-        <div class="project-content">
-          <span class="project-category-tag">${proj.categoryLabel}</span>
-          <h3 class="project-title">${proj.title}</h3>
-          <p class="project-desc">${proj.shortDesc}</p>
+        <div class="project-case-body">
+          <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-primary); line-height: 1.3;">${proj.title}</h3>
 
-          <div class="project-tags">
-            ${proj.tags.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+          <div class="case-block problem">
+            <span class="case-label">🛑 IL PROBLEMA</span>
+            ${proj.problema || proj.shortDesc}
           </div>
 
-          <div class="project-footer" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-            <button class="btn-view-details" data-id="${proj.id}">
-              Dettagli ➔
-            </button>
-            ${hasLiveUrl ? `
-              <a href="${proj.liveUrl}" target="_blank" class="btn btn-primary" style="padding: 0.35rem 0.85rem; font-size: 0.8rem;">
-                Apri Sito Live 🌐
+          <div class="case-block solution">
+            <span class="case-label">💡 LA SOLUZIONE</span>
+            ${proj.soluzione || proj.fullDesc}
+          </div>
+
+          <div class="case-block result">
+            <span class="case-label">🚀 IL RISULTATO</span>
+            ${proj.risultato || 'Ottimizzazione del processo aziendale e risparmio immediato di tempo.'}
+          </div>
+
+          <div class="project-tags" style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem;">
+            ${proj.tags.map(t => `<span class="tech-tag" style="font-size: 0.75rem; padding: 0.25rem 0.55rem;">${t}</span>`).join('')}
+          </div>
+
+          ${hasLiveUrl ? `
+            <div style="margin-top: auto; pt: 0.6rem;">
+              <a href="${proj.liveUrl}" target="_blank" class="btn btn-primary" style="width: 100%; font-size: 0.88rem; padding: 0.6rem; text-align: center;">
+                Prova la Demo / Guarda Progetto ➔
               </a>
-            ` : ''}
-          </div>
+            </div>
+          ` : ''}
         </div>
       </div>
     `;
   }).join('');
-
-  document.querySelectorAll('.btn-view-details').forEach(btn => {
-    btn.onclick = (e) => {
-      playPop();
-      const projId = e.currentTarget.getAttribute('data-id');
-      const project = projectsData.find(p => p.id === projId);
-      if (project) openProjectModal(project);
-    };
-  });
 }
 
 /* ==========================================================================
@@ -626,8 +626,7 @@ function initContactForm() {
   if (form) {
     form.onsubmit = (e) => {
       e.preventDefault();
-      fireConfetti();
-      showToast('Messaggio inviato con successo! Chiara ti risponderà a breve 🚀');
+      showToast('Richiesta inviata con successo! Ti risponderò entro 24 ore lavorative. 🤝');
       form.reset();
     };
   }

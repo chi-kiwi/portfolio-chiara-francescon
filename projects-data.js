@@ -29,21 +29,7 @@ export const projectsData = [
     liveUrl: "#",
     githubUrl: "#"
   },
-  {
-    id: "gestione-magazzino",
-    title: "Gestione Magazzino & Materiali Multi-Azienda",
-    category: "web-app",
-    categoryLabel: "Piattaforma Web Cloud",
-    shortDesc: "Piattaforma gestionale per il tracciamento in tempo reale di materiali, cantieri, alert di sotto-soglia e rientri.",
-    problema: "Materiali di cantiere e attrezzature dispersi nei vari siti di lavoro senza conteggio delle giacenze né controllo sui rientri in magazzino.",
-    soluzione: "Sistema gestionale cloud multi-azienda con anagrafica articoli, tracciamento carico/scarico, assegnazione automatica ai cantieri ed alert di sotto-soglia.",
-    risultato: "Controllo totale del magazzino, tracciabilità dei rientri dai cantieri e riduzione drastica degli acquisti doppi di materiale.",
-    tags: ["Base44", "Gestione Magazzino", "Tracciamento Cantieri", "Alert Giacenze", "Multi-Azienda"],
-    image: "magazzino",
-    badge: "📦 Sistema Gestionale",
-    liveUrl: "https://gestionemagazzino.base44.app/",
-    githubUrl: "#"
-  },
+
   {
     id: "excel-email-marketing",
     title: "Automazione Email Marketing Massivo (Excel/VBA)",

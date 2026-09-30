@@ -374,7 +374,7 @@ function renderQuizResult(score) {
     desc = 'Ti piace l\'ordine e il controllo totale sui dati. Hai grandi potenzialità, ma puoi risparmiare il 60% del tempo con le automazioni ed i gestionali di Chiara!';
   } else {
     title = '🚀 Profilo: Hai Bisogno di Chiara Francescon ASAP!';
-    desc = 'Mandi ancora troppe mail pesanti ed hai difficoltà a tracciare materiali e cantieri! È il momento perfetto per implementare MandaloVia e Gestione Magazzino!';
+    desc = 'Mandi ancora troppe mail pesanti ed hai difficoltà a tracciare materiali e cantieri! È il momento perfetto per implementare MandaloVia!';
   }
 
   result.innerHTML = `
@@ -382,7 +382,6 @@ function renderQuizResult(score) {
       <h3 style="color: var(--accent-primary); font-size: 1.4rem; margin-bottom: 0.6rem;">${title}</h3>
       <p style="color: var(--text-secondary); margin-bottom: 1.2rem; font-size: 0.95rem;">${desc}</p>
       <div style="display:flex; gap:0.6rem; justify-content:center; flex-wrap:wrap;">
-        <a href="https://gestionemagazzino.base44.app/" target="_blank" class="btn btn-primary" style="font-size: 0.85rem;">Prova Gestione Magazzino 📦</a>
         <a href="https://mandalovia.vercel.app/" target="_blank" class="btn btn-primary" style="font-size: 0.85rem;">Prova MandaloVia Live 🚀</a>
       </div>
     </div>
@@ -462,7 +461,6 @@ function renderProjects(projects) {
 
   grid.innerHTML = projects.map(proj => {
     const imageMap = {
-      teambuilder: '/teambuilder.png',
       mandalovia: '/mandalovia.png',
       magazzino: '/magazzino.png',
       'excel-mail': '/email-marketing.png'
@@ -583,7 +581,6 @@ function openProjectModal(project) {
   if (!modal || !modalBody || !project) return;
 
   const imageMap = {
-    teambuilder: '/teambuilder.png',
     clickflow: '/clickflow.png',
     mandalovia: '/mandalovia.png',
     magazzino: '/magazzino.png',

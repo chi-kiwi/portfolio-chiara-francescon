@@ -30,21 +30,6 @@ export const projectsData = [
     githubUrl: "#"
   },
   {
-    id: "gestione-squadre-teambuilder",
-    title: "Gestione Squadre Cantieri — TeamBuilder Flow",
-    category: "web-app",
-    categoryLabel: "Piattaforma Web Cloud",
-    shortDesc: "Sistema gestionale cloud per la creazione automatica delle squadre di lavoro nei cantieri, idoneità operai e monitoraggio flotta mezzi.",
-    problema: "Organizzazione settimanale di cantieri, operai e furgoni gestita su carta o tabelloni Excel disorganizzati, con rischio di sovrapposizioni e ruoli non idonei.",
-    soluzione: "Applicazione web con algoritmo di composizione guidata delle squadre in base a patenti, esperienza, disponibilità trasferte e mezzi aziendali assegnati.",
-    risultato: "Pianificazione settimanale visiva a colonne, azzeramento degli errori di assegnazione ed esportazione immediata del piano di cantiere in Excel.",
-    tags: ["Base44", "Gestione Cantieri", "Assegnazione Operai", "Flotta Mezzi", "Export Excel"],
-    image: "teambuilder",
-    badge: "⚡ Web App Gestionale",
-    liveUrl: "https://team-builder-flow.base44.app",
-    githubUrl: "#"
-  },
-  {
     id: "gestione-magazzino",
     title: "Gestione Magazzino & Materiali Multi-Azienda",
     category: "web-app",
